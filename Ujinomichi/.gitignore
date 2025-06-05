@@ -6,6 +6,8 @@
 .cache
 .git_disabled
 dist
+public
+.continue
 
 # Node dependencies
 node_modules
