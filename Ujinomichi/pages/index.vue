@@ -289,25 +289,52 @@
       <div class="w-full flex justify-center gap-8">
         <!-- Card produit -->
         <div
-          class="relative bg-white rounded-3xl shadow-2xl flex flex-col justify-end w-[320px] h-[420px] mx-auto transition-transform duration-200 hover:scale-105"
+          v-for="produit in produits"
+          :key="produit.id"
+          class="group w-full max-w-[260px] mx-4 flex flex-col items-center text-center bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1"
         >
-          <!-- (future image du produit ici) -->
-          <div class="p-6 flex flex-col justify-end h-full">
-            <div>
-              <span class="block text-lg font-bold text-[#393E38] mb-1"
-                >NOM PRODUIT</span
-              >
-              <span class="block text-lg font-extrabold tracking-wide"
-                >000$</span
-              >
+          <!-- Image du produit -->
+          <div class="relative w-full h-40">
+            <NuxtImg
+              :src="produit.imageUrl"
+              :alt="produit.name"
+              class="w-full h-full object-cover"
+            />
+          </div>
+
+          <!-- Icône flottante entre image et texte -->
+          <div class="relative -mt-6 z-10">
+            <div
+              class="backdrop-blur-sm bg-white/70 p-2 rounded-full shadow-md"
+            >
+              <img
+                :src="getIconByType(produit.type)"
+                :alt="produit.type"
+                class="w-6 h-6"
+              />
             </div>
           </div>
-          <!-- Bouton bas droite style beige -->
-          <div class="absolute bottom-6 right-6">
-            <div class="w-16 h-12 rounded-xl bg-[#e8dfd5]"></div>
+
+          <!-- Texte descriptif -->
+          <div class="p-4 pt-2">
+            <h3 class="text-base font-bold text-[#2d3336] mb-1">
+              {{ produit.name }}
+            </h3>
+            <p class="text-sm text-[#6a765a] mb-3">
+              {{
+                produit.description || "Une expérience authentique et raffinée."
+              }}
+            </p>
+            <span class="block text-sm font-medium text-[#4a524a] mb-2"
+              >{{ produit.price }} €</span
+            >
+            <button
+              class="px-4 py-2 rounded-full bg-[#6a765a] text-white text-sm font-semibold hover:bg-[#5a644e] transition-colors duration-300"
+            >
+              Acheter
+            </button>
           </div>
         </div>
-        <!-- Pour ajouter plus de cartes, duplique ci-dessus -->
       </div>
     </section>
     <section id="ProduitsSection" class="px-6 py-10 w-full max-w-7xl mx-auto">
@@ -499,3 +526,25 @@
     </section>
   </div>
 </template>
+<script setup lang="ts">
+const produits = ref([]);
+async function fetchProduits() {
+  const res = await fetch("/api/getLastProduct");
+  produits.value = await res.json();
+  console.log(produits.value);
+}
+function getIconByType(type) {
+  switch (type?.toLowerCase()) {
+    case "thé":
+      return "tea.svg";
+    case "découverte":
+      return "discovery.svg";
+    case "alcool":
+      return "alcool.svg";
+    default:
+      return "season.svg";
+  }
+}
+onMounted(fetchProduits);
+</script>
+<style></style>

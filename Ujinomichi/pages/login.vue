@@ -17,7 +17,11 @@
       <hr class="w-16 border-t-2 border-[#6f785c] mx-auto mb-4" />
       <p class="text-[#6f785c] text-center mb-6">Bon retour parmi nous !</p>
 
-      <form class="w-full max-w-xs flex flex-col gap-4">
+      <form
+        @submit.prevent="login"
+        class="w-full max-w-xs flex flex-col gap-4"
+        autocomplete="off"
+      >
         <!-- Email -->
         <div>
           <label class="block text-sm text-[#6f785c] mb-1" for="email"
@@ -25,6 +29,8 @@
           >
           <input
             id="email"
+            name="email"
+            v-model="email"
             type="email"
             class="w-full rounded-md border border-[#bfc1b4] bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6f785c] text-gray-900"
             autocomplete="email"
@@ -37,11 +43,14 @@
           >
           <input
             id="password"
+            name="password"
+            v-model="password"
             type="password"
             class="w-full rounded-md border border-[#bfc1b4] bg-transparent px-3 py-2 focus:outline-none focus:ring-2 focus:ring-[#6f785c] text-gray-900"
             autocomplete="current-password"
           />
           <div
+            id="lost_password"
             class="text-xs text-right text-[#6f785c] mt-1 cursor-pointer hover:underline"
           >
             Mot de passe oublié ?
@@ -81,3 +90,26 @@
     </div>
   </div>
 </template>
+<script setup lang="ts">
+const email = ref("");
+const password = ref("");
+const success = ref(false);
+
+async function login() {
+  console.log(email.value);
+  const res = await fetch("/api/auth/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({
+      email: email.value,
+      password: password.value,
+    }),
+  });
+
+  if (res.ok) {
+    success.value = true;
+    email.value = "";
+    password.value = "";
+  }
+}
+</script>
