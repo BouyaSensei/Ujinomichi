@@ -8,12 +8,27 @@ export default class UsersController {
     const user = await User.create(userData)
     return response.created(user)
   }
-  public async login({ request, auth, response }) {
+  public async createUserTest({ request, response }: HttpContext) {
+    const userData = { email: 'test@test.fr', password: 'test' }
+    const user = await User.create(userData)
+    return response.created(user)
+  }
+  public async login({ request, response }) {
     try {
       const email = request.input('email')
       const password = request.input('password')
-      await auth.use('web').attempt(email, password)
-      return response.ok({ message: 'Login successful' })
+      //await auth.use('web').attempt(email, password)
+      const user = await User.findBy('email', email)
+      if (!user || !(await user.verifyPassword(password))) {
+        throw new Error('Invalid credentials')
+      }
+      console.log('User logged in:', user.id)
+      //response.status(200).json({ userId: user })
+
+      return response.json({
+        message: 'Login successful',
+        userId: user.id,
+      })
     } catch (error) {
       // Handle specific error if any
       console.error(error)

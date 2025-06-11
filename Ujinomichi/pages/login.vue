@@ -56,6 +56,9 @@
             Mot de passe oublié ?
           </div>
         </div>
+        <div v-if="success === false" class="text-red-500 text-sm mt-2">
+          Email ou mot de passe incorrect
+        </div>
         <!-- Bouton principal -->
         <button
           type="submit"
@@ -93,11 +96,12 @@
 <script setup lang="ts">
 const email = ref("");
 const password = ref("");
-const success = ref(false);
+const success = ref();
 
 async function login() {
   console.log(email.value);
-  const res = await fetch("/api/auth/login", {
+
+  const response = await fetch("/api/auth/login", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({
@@ -105,11 +109,12 @@ async function login() {
       password: password.value,
     }),
   });
-
-  if (res.ok) {
+  if (response.ok) {
+    // Handle successful login
     success.value = true;
-    email.value = "";
-    password.value = "";
+  } else {
+    // Handle failed login
+    success.value = false;
   }
 }
 </script>

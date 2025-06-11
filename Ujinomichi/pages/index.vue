@@ -527,13 +527,21 @@
   </div>
 </template>
 <script setup lang="ts">
+//import verifyToken from "@/middlewares/verifyToken";
+const router = useRouter();
+const authStore = useAuthStore();
+
 const produits = ref([]);
 async function fetchProduits() {
   const res = await fetch("/api/getLastProduct");
   produits.value = await res.json();
-  console.log(produits.value);
+  //console.log(produits.value);
 }
-function getIconByType(type) {
+if (!authStore.isAuthenticated) {
+  router.push("/login");
+}
+
+function getIconByType(type: string) {
   switch (type?.toLowerCase()) {
     case "thé":
       return "tea.svg";
@@ -545,6 +553,9 @@ function getIconByType(type) {
       return "season.svg";
   }
 }
+onMounted(() => {
+  authStore.checkAuth();
+});
 onMounted(fetchProduits);
 </script>
 <style></style>

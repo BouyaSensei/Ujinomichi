@@ -19,7 +19,7 @@ router.get('/', async () => {
 // User routes
 router.post('/create-user', [UserController, 'createUser'])
 router.post('/login', [UserController, 'login'])
-
+router.get('/create-user-test', [UserController, 'createUserTest'])
 // Product routes
 router.get('/create-product', [ProductController, 'createProductTest'])
 router.get('/get-product', [ProductController, 'getAllProducts'])
