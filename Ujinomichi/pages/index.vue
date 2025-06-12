@@ -90,7 +90,7 @@
         <ul class="flex flex-wrap gap-20 justify-center items-center">
           <li class="flex flex-col items-center">
             <div
-              class="relative w-36 h-36 flex items-center justify-center drop-shadow-lg"
+              class="relative w-32 h-32 md:w-42 md:h-42 flex items-center justify-center drop-shadow-lg"
             >
               <svg
                 class="absolute inset-0 w-full h-full"
@@ -114,7 +114,7 @@
               <NuxtImg
                 src="wheat.png"
                 alt="icon ingrédients locaux"
-                class="w-20 h-20 object-contain z-10"
+                class="w-16 h-16 md:w-24 md:h-24 object-contain z-10"
               />
             </div>
             <p
@@ -125,7 +125,7 @@
           </li>
           <li class="flex flex-col items-center">
             <div
-              class="relative w-36 h-36 flex items-center justify-center drop-shadow-lg"
+              class="relative w-32 h-32 md:w-42 md:h-42 flex items-center justify-center drop-shadow-lg"
             >
               <svg
                 class="absolute inset-0 w-full h-full"
@@ -149,7 +149,7 @@
               <NuxtImg
                 src="sun.png"
                 alt="icon produits de saison"
-                class="w-20 h-20 object-contain z-10"
+                class="w-16 h-16 md:w-24 md:h-24 object-contain z-10"
               />
             </div>
             <p
@@ -160,7 +160,7 @@
           </li>
           <li class="flex flex-col items-center">
             <div
-              class="relative w-36 h-36 flex items-center justify-center drop-shadow-lg"
+              class="relative w-32 h-32 md:w-42 md:h-42 flex items-center justify-center drop-shadow-lg"
             >
               <svg
                 class="absolute inset-0 w-full h-full"
@@ -184,7 +184,7 @@
               <NuxtImg
                 src="trees_1.png"
                 alt="icon biodiversité"
-                class="w-20 h-20 object-contain z-10"
+                class="w-16 h-16 md:w-24 md:h-24 object-contain z-10"
               />
             </div>
             <p
@@ -195,7 +195,7 @@
           </li>
           <li class="flex flex-col items-center">
             <div
-              class="relative w-36 h-36 flex items-center justify-center drop-shadow-lg"
+              class="relative w-32 h-32 md:w-42 md:h-42 flex items-center justify-center drop-shadow-lg"
             >
               <svg
                 class="absolute inset-0 w-full h-full"
@@ -219,7 +219,7 @@
               <NuxtImg
                 src="flask-conical-off.png"
                 alt="icon sans additifs"
-                class="w-20 h-20 object-contain z-10"
+                class="w-16 h-16 md:w-24 md:h-24 object-contain z-10"
               />
             </div>
             <p
@@ -286,7 +286,9 @@
       >
         NOS PRODUITS DU MOMENT
       </h2>
-      <div class="w-full flex justify-center gap-8">
+      <div
+        class="w-full flex items-center flex-col justify-center md:flex md:flex-row gap-8"
+      >
         <!-- Card produit -->
         <div
           v-for="produit in produits"

@@ -18,6 +18,8 @@ router.get('/', async () => {
 
 // User routes
 router.post('/create-user', [UserController, 'createUser'])
+router.post('/modify-user', [UserController, 'modifyUser'])
+router.post('/get-user-info', [UserController, 'getUserInfo'])
 router.post('/login', [UserController, 'login'])
 router.get('/create-user-test', [UserController, 'createUserTest'])
 // Product routes

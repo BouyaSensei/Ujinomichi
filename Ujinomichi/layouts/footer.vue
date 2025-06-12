@@ -3,7 +3,7 @@
     <footer class="bg-[#e8dfd5] pt-10 pb-2 w-full">
       <!-- Bandeau d’avantages -->
       <div
-        class="flex flex-col md:flex-row justify-center items-center gap-10 mb-12"
+        class="flex flex-col md:flex-row justify-center items-center gap-10 md:mb-12"
       >
         <!-- Suivi livraison -->
         <div class="flex flex-col items-center">
@@ -42,10 +42,38 @@
 
       <!-- Bloc principal -->
       <div
-        class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 md:gap-0 justify-between px-4 md:px-0 mb-6"
+        class="max-w-6xl mx-auto flex flex-col gap-8 md:gap-0 justify-between px-4 md:px-0 mb-6"
       >
+        <!-- Newsletter -->
+        <div class="flex-1 flex items-center justify-center">
+          <form
+            class="w-full max-w-md bg-[#494d42] rounded-2xl px-7 py-8 flex flex-col gap-5"
+          >
+            <h3
+              class="text-center text-xl font-extrabold text-[#faf8f4] mb-2 tracking-widest"
+              style="font-family: 'Comic Sans MS', 'Caveat', cursive"
+            >
+              NE MANQUEZ PAS NOS NOUVEAUX<br />ARRIVAGES ET PROMOTIONS
+            </h3>
+            <input
+              type="email"
+              placeholder="Adresse email"
+              class="rounded-xl w-full px-4 py-3 bg-white text-[#393E38] placeholder-[#bdbdbd] font-semibold focus:outline-none"
+            />
+            <button
+              type="submit"
+              class="rounded-xl w-full px-4 py-3 bg-[#e8dfd5] text-[#393E38] font-bold text-lg transition-colors hover:bg-[#cac2b4]"
+            >
+              JE M’INSCRIS !
+            </button>
+            <span class="block text-xs text-[#bdbdbd] text-center"
+              >En confirmant, vous approuvez notre politique de
+              confidentialité.</span
+            >
+          </form>
+        </div>
         <!-- Colonne Infos -->
-        <div class="flex-1 flex flex-col md:flex-row text-center gap-10">
+        <div class="flex-1 pt-6 flex flex-col md:flex-row text-center gap-10">
           <!-- Compagnie -->
           <div>
             <h4 class="font-bold text-[#393E38] mb-2">COMPAGNIE</h4>
@@ -86,34 +114,6 @@
               </li>
             </ul>
           </div>
-        </div>
-        <!-- Newsletter -->
-        <div class="flex-1 flex items-center justify-center">
-          <form
-            class="w-full max-w-md bg-[#494d42] rounded-2xl px-7 py-8 flex flex-col gap-5"
-          >
-            <h3
-              class="text-center text-xl font-extrabold text-[#faf8f4] mb-2 tracking-widest"
-              style="font-family: 'Comic Sans MS', 'Caveat', cursive"
-            >
-              NE MANQUEZ PAS NOS NOUVEAUX<br />ARRIVAGES ET PROMOTIONS
-            </h3>
-            <input
-              type="email"
-              placeholder="Adresse email"
-              class="rounded-xl w-full px-4 py-3 bg-white text-[#393E38] placeholder-[#bdbdbd] font-semibold focus:outline-none"
-            />
-            <button
-              type="submit"
-              class="rounded-xl w-full px-4 py-3 bg-[#e8dfd5] text-[#393E38] font-bold text-lg transition-colors hover:bg-[#cac2b4]"
-            >
-              JE M’INSCRIS !
-            </button>
-            <span class="block text-xs text-[#bdbdbd] text-center"
-              >En confirmant, vous approuvez notre politique de
-              confidentialité.</span
-            >
-          </form>
         </div>
       </div>
 

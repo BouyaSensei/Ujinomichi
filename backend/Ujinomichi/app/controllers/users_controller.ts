@@ -8,6 +8,31 @@ export default class UsersController {
     const user = await User.create(userData)
     return response.created(user)
   }
+  public async getUserInfo({ request, response }: HttpContext) {
+    const user = request.only(['userId'])
+    //console.log(user.userId)
+
+    const userInfo = await User.findOrFail(user.userId)
+    return userInfo.toJSON()
+  }
+  public async modifyUser({ request, response }: HttpContext) {
+    //return response.status(200).json({ userId: request })
+    const data = request.all()
+    console.log(data.userData)
+    const userId = data.userData['userId']
+    const userInfo = await User.findOrFail(userId)
+    for (const key in data.userData) {
+      if (data.userData[key] && key !== 'userId') {
+        console.log(data.userData[key])
+        ;(userInfo as any)[key] = data.userData[key]
+      }
+    }
+    // const userInfo = await User.findOrFail(userData.userId)
+    // userInfo.phone_number = ''
+    console.log(userInfo)
+    // await userInfo.save()
+    //User.updateOrCreate()
+  }
   public async createUserTest({ request, response }: HttpContext) {
     const userData = { email: 'test@test.fr', password: 'test' }
     const user = await User.create(userData)

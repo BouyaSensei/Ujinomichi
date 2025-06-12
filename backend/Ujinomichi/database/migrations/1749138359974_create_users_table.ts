@@ -7,7 +7,10 @@ export default class extends BaseSchema {
     this.schema.createTable(this.tableName, (table) => {
       table.increments('id').notNullable()
       table.string('email', 254).notNullable().unique()
+      table.string('phone_number', 255)
+      table.string('delivery_address', 255)
       table.string('password').notNullable()
+      table.string('command_order', 255).nullable()
       table.string('basket').nullable()
       table.string('payment_method').nullable()
       table.string('jwt_token').nullable()

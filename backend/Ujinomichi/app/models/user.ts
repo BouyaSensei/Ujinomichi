@@ -18,10 +18,14 @@ export default class User extends compose(BaseModel, AuthFinder) {
 
   @column({ serializeAs: null })
   declare password: string
-
+  @column()
+  declare phone_number: string | null
+  @column()
+  declare delivery_address: string | null
   @column()
   declare basket: string | null
-
+  @column()
+  declare command_order: string | null
   @column()
   declare payment_method: string | null
 
