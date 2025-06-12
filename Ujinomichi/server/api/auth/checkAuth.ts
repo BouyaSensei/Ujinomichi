@@ -9,13 +9,16 @@ export default defineEventHandler(async (event) => {
   }
   try {
     if (token) {
-      console.log(token);
       const data = jwt.verify(token, process.env.JWT_SECRET as string);
 
-      return { data: data };
+      return { user: data };
     }
   } catch (error) {
     console.log(error);
+    setCookie(event, "token", "", {
+      maxAge: 0,
+      path: "/",
+    });
     return { message: "Unauthorized" };
   }
 });

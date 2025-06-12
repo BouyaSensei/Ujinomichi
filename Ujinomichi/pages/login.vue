@@ -4,13 +4,13 @@
 
     <div class="flex-1 flex flex-col justify-center items-center px-4">
       <!-- Logo -->
-      <NuxtLink to="/" class="block mb-4">
-        <NuxtImg
-          src="flower.png"
-          alt="Logo Ujinomichi"
-          class="h-12 w-12 mx-auto"
-        />
-      </NuxtLink>
+
+      <NuxtImg
+        src="flower.png"
+        alt="Logo Ujinomichi"
+        class="h-12 w-12 mx-auto"
+      />
+
       <h1 class="text-2xl font-bold text-[#333] text-center mt-2 mb-2">
         Connexion à votre<br />compte
       </h1>
@@ -97,24 +97,27 @@
 const email = ref("");
 const password = ref("");
 const success = ref();
-
+const router = useRouter();
+const authStore = useAuthStore();
 async function login() {
-  console.log(email.value);
-
-  const response = await fetch("/api/auth/login", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({
-      email: email.value,
-      password: password.value,
-    }),
-  });
-  if (response.ok) {
-    // Handle successful login
-    success.value = true;
-  } else {
-    // Handle failed login
+  try {
+    await authStore.login(email.value, password.value);
+    router.push("/dashboard_user");
+  } catch (error) {
     success.value = false;
+    //console.log(error);
   }
 }
+
+if (authStore.isAuthenticated) {
+  router.push("/dashboard_user");
+  success.value = true;
+}
+
+if (authStore.isAuthenticated || success.value === true) {
+  router.push("/dashboard_user");
+}
+onMounted(() => {
+  authStore.checkAuth();
+});
 </script>

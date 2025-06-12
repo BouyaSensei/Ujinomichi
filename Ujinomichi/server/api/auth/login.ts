@@ -5,7 +5,6 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const email = body.email;
   const password = body.password;
-
   try {
     const res = await fetch("http://localhost:3333/login", {
       method: "POST",
@@ -18,11 +17,12 @@ export default defineEventHandler(async (event) => {
         expiresIn: "1h",
       });
       setCookie(event, "token", token, { httpOnly: false, secure: false });
+
       event.node.res.statusCode = 200;
       return { message: "Login successful", token: token };
     } else {
-      event.node.res.statusCode = 400;
-      return { message: "Invalid credentials" };
+      event.node.res.statusCode = res.status;
+      return { message: "Login failed" };
     }
   } catch (error) {
     event.node.res.statusCode = 500;

@@ -528,7 +528,7 @@
 </template>
 <script setup lang="ts">
 //import verifyToken from "@/middlewares/verifyToken";
-const router = useRouter();
+
 const authStore = useAuthStore();
 
 const produits = ref([]);
@@ -536,9 +536,6 @@ async function fetchProduits() {
   const res = await fetch("/api/getLastProduct");
   produits.value = await res.json();
   //console.log(produits.value);
-}
-if (!authStore.isAuthenticated) {
-  router.push("/login");
 }
 
 function getIconByType(type: string) {
@@ -553,9 +550,7 @@ function getIconByType(type: string) {
       return "season.svg";
   }
 }
-onMounted(() => {
-  authStore.checkAuth();
-});
+
 onMounted(fetchProduits);
 </script>
 <style></style>
