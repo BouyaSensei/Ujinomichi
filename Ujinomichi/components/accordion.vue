@@ -1,44 +1,41 @@
 <template>
   <div class="border-b">
-    <button
-      @click="open = !open"
-      class="w-full flex items-center justify-between py-3 font-semibold text-left"
-    >
-      <div class="flex items-center gap-2">
+    <div class="block md:hidden">
+      <button
+        @click="open = !open"
+        class="w-full flex items-center justify-between py-3 font-semibold text-left group"
+      >
+        <div class="flex items-center gap-2">
+          <NuxtImg
+            v-if="iconName"
+            :src="`/icons/${iconName}.png`"
+            :alt="title"
+            width="20"
+            height="20"
+            class="object-contain"
+          />
+          {{ title }}
+        </div>
         <NuxtImg
-          v-if="iconName"
-          :src="`/icons/${iconName}.png`"
-          :alt="title"
+          :src="`/icons/${open ? 'chevron-up' : 'chevron-down'}.png`"
+          alt="toggle"
           width="20"
           height="20"
           class="object-contain"
         />
-        {{ title }}
-      </div>
-      <slot name="chevron">
-        <NuxtImg
-          v-if="!open"
-          src="/icons/chevron-down.png"
-          alt="ouvrir"
-          width="20"
-          height="20"
-          class="object-contain"
-        />
-        <NuxtImg
-          v-else
-          src="/icons/chevron-up.png"
-          alt="fermer"
-          width="20"
-          height="20"
-          class="object-contain"
-        />
-      </slot>
-    </button>
-    <transition name="fade">
-      <div v-if="open" class="pt-2">
-        <slot />
-      </div>
-    </transition>
+      </button>
+
+      <transition name="fade">
+        <div v-if="open" class="pt-2">
+          <slot />
+        </div>
+      </transition>
+    </div>
+
+    <!-- Desktop version always visible -->
+    <div class="hidden md:block pt-2">
+      <slot />
+    </div>
   </div>
 </template>
 

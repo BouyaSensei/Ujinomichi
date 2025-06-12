@@ -45,7 +45,7 @@
         class="max-w-6xl mx-auto flex flex-col md:flex-row gap-8 md:gap-0 justify-between px-4 md:px-0 mb-6"
       >
         <!-- Colonne Infos -->
-        <div class="flex-1 flex flex-col md:flex-row gap-10">
+        <div class="flex-1 flex flex-col md:flex-row text-center gap-10">
           <!-- Compagnie -->
           <div>
             <h4 class="font-bold text-[#393E38] mb-2">COMPAGNIE</h4>
@@ -63,7 +63,7 @@
           <!-- Paiement -->
           <div>
             <h4 class="font-bold text-[#393E38] mb-2">PAIEMENT</h4>
-            <div class="flex items-center gap-2">
+            <div class="flex items-center justify-center gap-2">
               <NuxtImg src="paypal.png" alt="PayPal" class="h-8 w-auto" />
               <NuxtImg
                 src="mastercard.png"
