@@ -1,7 +1,8 @@
 import type { HttpContext } from '@adonisjs/core/http'
 //import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-
 import User from '#models/user'
+import hash from '@adonisjs/core/services/hash'
+
 export default class UsersController {
   public async createUser({ request, response }: HttpContext) {
     const userData = request.only(['email', 'password'])
@@ -18,19 +19,27 @@ export default class UsersController {
   public async modifyUser({ request, response }: HttpContext) {
     //return response.status(200).json({ userId: request })
     const data = request.all()
-    console.log(data.userData)
     const userId = data.userData['userId']
     const userInfo = await User.findOrFail(userId)
+    //console.log(data.userData)
+    if (!(await hash.verify(userInfo.password, data.userData['currentPassword']))) {
+      throw new Error('Invalid credentials')
+    }
     for (const key in data.userData) {
-      if (data.userData[key] && key !== 'userId') {
-        console.log(data.userData[key])
+      if (data.userData[key] && key !== 'userId' && key !== 'currentPassword') {
+        //console.log(data.userData[key])
+        /*if (key === 'password') {
+          console.log(data.userData[key])
+          const passwordhash = await hash.make(data.userData[key])
+          userInfo[key] = passwordhash
+          continue
+        }*/
         ;(userInfo as any)[key] = data.userData[key]
       }
     }
     // const userInfo = await User.findOrFail(userData.userId)
     // userInfo.phone_number = ''
-    console.log(userInfo)
-    // await userInfo.save()
+    await userInfo.save()
     //User.updateOrCreate()
   }
   public async createUserTest({ request, response }: HttpContext) {
@@ -44,10 +53,10 @@ export default class UsersController {
       const password = request.input('password')
       //await auth.use('web').attempt(email, password)
       const user = await User.findBy('email', email)
-      if (!user || !(await user.verifyPassword(password))) {
+      console.log(password)
+      if (!user || !(await hash.verify(user.password, password))) {
         throw new Error('Invalid credentials')
       }
-      console.log('User logged in:', user.id)
       //response.status(200).json({ userId: user })
 
       return response.json({

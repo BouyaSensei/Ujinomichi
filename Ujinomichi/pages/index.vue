@@ -22,7 +22,7 @@
             l'art de la production<br />japonaise locale
           </h2>
           <div class="flex gap-4">
-            <NuxtLink to="/all_products" class="no-underline">
+            <NuxtLink to="/products" class="no-underline">
               <button
                 class="px-8 py-3 rounded-full bg-[#eae4da] text-gray-800 font-bold text-base hover:bg-[#f5eee2] transition"
               >

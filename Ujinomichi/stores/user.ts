@@ -13,7 +13,7 @@ export const useUserStore = defineStore("user", {
     return {
       id: null,
       email: null,
-      phone_number: null,
+      phone_number: "",
       orders: null,
       wishlist: null,
       deliveryAddress: null,
@@ -32,7 +32,7 @@ export const useUserStore = defineStore("user", {
         response.json().then((data) => {
           this.id = data.id;
           this.email = data.email;
-          this.phone_number = data.phone_number;
+          this.phone_number = data.phoneNumber;
           this.orders = data.commandOrders;
           this.wishlist = data.wishlist;
           this.deliveryAddress = data.deliveryAddress;

@@ -7,7 +7,8 @@ export default defineEventHandler(async (event) => {
     userId: data.userId || null,
     email: body.email || null,
     password: body.password || null,
-    phone: body.phone || null,
+    currentPassword: body.currentPassword || null,
+    phone_number: body.phone || null,
     delivery_address: body.delivery_address || null,
   };
 
