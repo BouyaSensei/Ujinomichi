@@ -48,13 +48,16 @@
 
 <script setup>
 import { ref } from "vue";
-
-const email = ref("blopblip.37@gmail.com");
-const password = ref("password");
-const phone = ref("0624583216");
-const token = useCookie("token");
 const store = useAuthStore();
+const userStore = useUserStore();
 
+const email = ref(userStore.email);
+const password = ref();
+const phone = ref(userStore.phone_number);
+const token = useCookie("token");
+
+userStore.token = token.value;
+//console.log(userStore);
 async function modify() {
   await fetch("/api/user/modifyUser", {
     method: "POST",
@@ -69,6 +72,7 @@ async function modify() {
 }
 
 onMounted(() => {
-  store.getInfo();
+  store.checkAuth();
+  userStore.getInfo();
 });
 </script>

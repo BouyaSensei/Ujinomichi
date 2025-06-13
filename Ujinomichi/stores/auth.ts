@@ -6,14 +6,7 @@ interface AuthState {
   isAuthenticated: boolean;
   isLoading: boolean;
 }
-interface User {
-  id: number;
-  email: null | string;
-  phone_number: null | string;
-  orders: null | Array<object>;
-  wishlist: null | Array<object>;
-  addresses: null | Array<object>;
-}
+
 export const useAuthStore = defineStore("auth", {
   state(): AuthState {
     return {
@@ -72,17 +65,6 @@ export const useAuthStore = defineStore("auth", {
       this.token = null;
       this.isAuthenticated = false;
       useCookie("token").value = null;
-    },
-    getInfo() {
-      // console.log(this.token);
-      fetch("api/user/getUserInfo", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${this.token}` },
-      })
-        .then((response) => response.json())
-        .then((data) => {
-          console.log(data);
-        });
     },
   },
 });
