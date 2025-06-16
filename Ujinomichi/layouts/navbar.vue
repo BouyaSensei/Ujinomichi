@@ -112,6 +112,7 @@
               class="w-full h-10 pl-5 pr-10 rounded-full bg-white focus:outline-none text-gray-800 text-base"
               placeholder="Recherche..."
             />
+
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="cursor-pointer h-6 w-6 text-gray-500 absolute right-3 top-1/2 -translate-y-1/2"
@@ -129,24 +130,25 @@
           </div>
 
           <div class="flex justify-center gap-10">
-            <button class="text-white hover:scale-90 transition duration-150">
-              <svg
-                class="h-7 w-7"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                viewBox="0 0 24 24"
-              >
-                <circle cx="9" cy="20" r="1.5" />
-                <circle cx="17" cy="20" r="1.5" />
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  d="M5 6h2l3.6 7.59a1 1 0 00.95.41H19a1 1 0 00.98-.8l1.5-8.5A1 1 0 0020.5 4H7"
-                />
-              </svg>
-            </button>
-
+            <nuxtLink to="/basket">
+              <button class="text-white hover:scale-90 transition duration-150">
+                <svg
+                  class="h-7 w-7"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  viewBox="0 0 24 24"
+                >
+                  <circle cx="9" cy="20" r="1.5" />
+                  <circle cx="17" cy="20" r="1.5" />
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M5 6h2l3.6 7.59a1 1 0 00.95.41H19a1 1 0 00.98-.8l1.5-8.5A1 1 0 0020.5 4H7"
+                  />
+                </svg>
+              </button>
+            </nuxtLink>
             <NuxtLink
               to="/login"
               class="text-white hover:scale-90 transition duration-150"

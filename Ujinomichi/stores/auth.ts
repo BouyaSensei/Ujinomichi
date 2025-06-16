@@ -11,7 +11,7 @@ export const useAuthStore = defineStore("auth", {
   state(): AuthState {
     return {
       user: null,
-      token: null,
+      token: (useCookie("token").value as string) || null,
       isAuthenticated: false,
       isLoading: true,
     };
@@ -40,16 +40,14 @@ export const useAuthStore = defineStore("auth", {
       });
     },
     async checkAuth() {
-      const token = useCookie("token").value || this.token;
-      if (token) {
+      if (this.token) {
         try {
           const response = await fetch("/api/auth/checkAuth", {
-            headers: { Authorization: `Bearer ${token}` },
+            headers: { Authorization: `Bearer ${this.token}` },
           });
           if (response.ok) {
             const decodedToken = await response.json();
-
-            this.user = decodedToken;
+            this.user = decodedToken.user;
             this.isAuthenticated = true;
           }
         } catch (error) {

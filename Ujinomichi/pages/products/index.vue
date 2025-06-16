@@ -207,6 +207,7 @@ await useAsyncData("products", () => productStore.fetchProducts());
 onMounted(() => productStore.fetchProducts());
 
 // Pagination
+
 const currentPage = ref(1);
 const itemsPerPage = 8;
 const searchTerm = ref("");

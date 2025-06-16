@@ -5,7 +5,9 @@ interface User {
   orders: null | Array<object>;
   wishlist: null | Array<object>;
   deliveryAddress: null | Array<object>;
-  token: null | string;
+  basketId: [] | Array<object>;
+  basket: [] | Array<object>;
+  token: string | null;
 }
 
 export const useUserStore = defineStore("user", {
@@ -17,28 +19,35 @@ export const useUserStore = defineStore("user", {
       orders: null,
       wishlist: null,
       deliveryAddress: null,
-      token: null,
+      basketId: [],
+      basket: [],
+      token: useCookie("token").value as string | null,
     };
   },
   actions: {
     async getInfo() {
       // console.log(this.token);
-      const response = await fetch("api/user/getUserInfo", {
-        method: "POST",
-        headers: { Authorization: `Bearer ${this.token}` },
-      });
-
-      if (response.ok) {
-        response.json().then((data) => {
-          this.id = data.id;
-          this.email = data.email;
-          this.phone_number = data.phoneNumber;
-          this.orders = data.commandOrders;
-          this.wishlist = data.wishlist;
-          this.deliveryAddress = data.deliveryAddress;
+      try {
+        const response = await fetch("api/user/getUserInfo", {
+          method: "POST",
+          headers: { Authorization: `Bearer ${this.token}` },
         });
-      } else {
-        throw new Error("Error fetching user info");
+
+        if (!response.ok) {
+          throw new Error(`HTTP error! status: ${response.status}`);
+        }
+
+        const data = await response.json();
+        this.id = data.id;
+        this.email = data.email;
+        this.phone_number = data.phoneNumber;
+        this.orders = data.commandOrders;
+        this.wishlist = data.wishlist;
+        this.deliveryAddress = data.deliveryAddress;
+        this.basketId = JSON.parse(data.basket);
+      } catch (error) {
+        console.error("Error fetching user info:", error);
+        throw new Error("Impossible de récupérer les informations utilisateur");
       }
     },
   },

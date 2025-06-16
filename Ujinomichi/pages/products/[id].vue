@@ -73,8 +73,10 @@
         </div> -->
 
         <!-- Boutons -->
-        <div class="flex flex-wrap gap-2 mt-2">
+
+        <div v-if="authStore.isAuthenticated" class="flex flex-wrap gap-2 mt-2">
           <button
+            @click="addToBasket"
             class="bg-[#3E4233] text-white rounded px-4 py-2 text-sm font-semibold transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:shadow-lg hover:bg-[#4b4f3d]"
           >
             Ajouter au panier
@@ -94,7 +96,10 @@
         <div class="flex items-center gap-4 mt-3">
           <div class="relative group inline-block">
             <!-- Le bouton -->
-            <div class="relative group inline-block">
+            <div
+              v-if="authStore.isAuthenticated"
+              class="relative group inline-block"
+            >
               <!-- Bouton wishlist -->
               <button
                 class="bg-[#f5dfe9] text-white/90 p-2 rounded-full hover:bg-[#ececec] transition focus:outline-none focus:ring-2 focus:ring-[#3E4233]"
@@ -110,6 +115,10 @@
               >
                 Ajouter à la liste de souhait
               </div>
+            </div>
+            <div v-else>
+              Veuillez vous connecter pour ajouter à la liste de souhait ou au
+              panier
             </div>
 
             <!-- Tooltip -->
@@ -202,13 +211,23 @@ const id = useRoute().params.id;
 const route = useRoute();
 const productStore = useProductsStore();
 const quantity = ref(1);
-
+const authStore = useAuthStore();
 const increment = () => {
   if (quantity.value < 10) quantity.value++;
 };
 
 const decrement = () => {
   if (quantity.value > 1) quantity.value--;
+};
+const addToBasket = () => {
+  const userId = authStore.user.userId;
+  const productQuantity = quantity.value;
+  console.log("check");
+  fetch("/api/basket/addToBasket", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId, id, productQuantity }),
+  });
 };
 
 // Optionnel : forcer limite si on tape un chiffre
@@ -236,6 +255,7 @@ const similarProducts = computed(() => {
 });
 
 import { toRaw } from "vue";
+
 const cookieSimilarProducts = ref([]);
 const cookieProduct = ref({});
 const productCookie = useCookie("product-data", {
@@ -250,10 +270,12 @@ if (product.value !== undefined) {
   });
 } else {
   cookieProduct.value = toRaw(productCookie.value.products);
-  console.log(cookieProduct.value);
+  //console.log(cookieProduct.value);
   cookieSimilarProducts.value.push(...productCookie.value.similarProducts);
 }
-
+onMounted(() => {
+  authStore.checkAuth();
+});
 //console.log(productCookie.value.products);
 //console.log(toRaw(productCookie.value.products)); // Objet brut
 //console.log(JSON.stringify(productCookie.value.products)); // JSON lisible

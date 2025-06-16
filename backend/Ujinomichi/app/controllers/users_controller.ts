@@ -16,6 +16,29 @@ export default class UsersController {
     const userInfo = await User.findOrFail(user.userId)
     return userInfo.toJSON()
   }
+  public async addToBasket({ request, response }: HttpContext) {
+    const user = request.only(['userId'])
+    const product = request.only(['productId', 'productQuantity'])
+    console.log(user)
+    const check = await User.findByOrFail('id', user.userId)
+    if (check !== undefined) {
+      const productDetails = {
+        productId: product.productId,
+        productQuantity: product.productQuantity,
+      }
+
+      if (check.basket !== null) {
+        const currentBasket = JSON.parse(check.basket)
+        currentBasket.push(productDetails)
+        check.basket = JSON.stringify(currentBasket)
+      } else {
+        check.basket = JSON.stringify([productDetails])
+      }
+
+      console.log(check.basket)
+      check.save()
+    }
+  }
   public async modifyUser({ request, response }: HttpContext) {
     //return response.status(200).json({ userId: request })
     const data = request.all()

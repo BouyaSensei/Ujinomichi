@@ -11,7 +11,7 @@ export default class extends BaseSchema {
       table.string('delivery_address', 255)
       table.string('password').notNullable()
       table.string('command_order', 255).nullable()
-      table.string('basket').nullable()
+      table.text('basket').nullable()
       table.string('payment_method').nullable()
       table.string('jwt_token').nullable()
       table.timestamp('created_at').notNullable()

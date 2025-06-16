@@ -18,5 +18,9 @@ export const useProductsStore = defineStore("products", {
         this.products = products;
       });
     },
+    async singleProduct(productId: string) {
+      console.log(productId);
+      //await fetch("/api/getSingleProductById")
+    },
   },
 });
