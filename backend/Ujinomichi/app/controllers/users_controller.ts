@@ -46,6 +46,48 @@ export default class UsersController {
     userInfo.basket = null
     userInfo.save()
   }
+  public async removeProductToBasket({ request, response }: HttpContext) {
+    const user = request.only(['userId', 'productId'])
+    console.log(user.productId)
+    const userInfo = await User.findOrFail(user.userId)
+    const products = JSON.parse(userInfo.basket)
+    const newBasket: Array<[]> = products.filter(
+      (product: any) => product.productId !== user.productId.toString()
+    )
+    userInfo.basket = JSON.stringify(newBasket)
+    userInfo.save()
+  }
+  public async incrementProductToBasket({ request, response }: HttpContext) {
+    const user = request.only(['userId', 'productId'])
+    const userInfo = await User.findOrFail(user.userId)
+    const products = JSON.parse(userInfo.basket)
+    const newBasket: Array<[]> = []
+    products.forEach((product: any) => {
+      if (product.productId === user.productId.toString()) {
+        product.productQuantity++
+      }
+      newBasket.push(product)
+    })
+
+    //console.log(newBasket)
+    userInfo.basket = JSON.stringify(newBasket)
+    userInfo.save()
+  }
+  public async decrementProductToBasket({ request, response }: HttpContext) {
+    const user = request.only(['userId', 'productId'])
+
+    const userInfo = await User.findOrFail(user.userId)
+    const products = JSON.parse(userInfo.basket)
+    const newBasket: Array<[]> = []
+    products.forEach((product: any) => {
+      if (product.productId === user.productId.toString()) {
+        product.productQuantity = product.productQuantity - 1
+      }
+      newBasket.push(product)
+    })
+    userInfo.basket = JSON.stringify(newBasket)
+    userInfo.save()
+  }
   public async modifyUser({ request, response }: HttpContext) {
     //return response.status(200).json({ userId: request })
     const data = request.all()

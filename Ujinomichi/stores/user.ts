@@ -45,7 +45,6 @@ export const useUserStore = defineStore("user", {
         this.wishlist = data.wishlist;
         this.deliveryAddress = data.deliveryAddress;
         this.basketId = JSON.parse(data.basket);
-        return "ok";
       } catch (error) {
         console.error("Error fetching user info:", error);
         throw new Error("Impossible de récupérer les informations utilisateur");
@@ -59,6 +58,48 @@ export const useUserStore = defineStore("user", {
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ userId }),
         });
+      } catch (error) {}
+    },
+    async dropProductFromBasket(productId: number) {
+      const userId = this.id;
+
+      try {
+        const response = await fetch("api/basket/removeProductToBasket", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ productId, userId }),
+        });
+        if (response.ok) {
+          return response.status;
+        }
+      } catch (error) {}
+    },
+    async incrementProductBasket(productId: number) {
+      const userId = this.id;
+
+      try {
+        const response = await fetch("api/basket/incrementProductToBasket", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId, productId }),
+        });
+        if (response.ok) {
+          return response.status;
+        }
+      } catch (error) {}
+    },
+    async decrementProductBasket(productId: number) {
+      const userId = this.id;
+
+      try {
+        const response = await fetch("api/basket/decrementProductToBasket", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId, productId }),
+        });
+        if (response.ok) {
+          return response.status;
+        }
       } catch (error) {}
     },
   },

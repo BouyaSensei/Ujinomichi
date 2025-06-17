@@ -117,6 +117,7 @@ if (authStore.isAuthenticated) {
 if (authStore.isAuthenticated || success.value === true) {
   router.push("/dashboard_user");
 }
+
 onMounted(() => {
   authStore.checkAuth();
 });
