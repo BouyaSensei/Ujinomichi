@@ -43,8 +43,14 @@
             />
             <div class="flex-1">
               <div class="text-sm font-bold text-[#3E4233] uppercase mb-1">
-                {{ item.name }}
+                <NuxtLink
+                  :to="`/products/${item.id}`"
+                  class="hover:text-[#3E4233] hover:underline transition duration-300"
+                >
+                  {{ item.name }}
+                </NuxtLink>
               </div>
+
               <div class="text-[#3E4233] font-semibold text-base mb-2">
                 {{ item.price }} €
               </div>
@@ -103,13 +109,13 @@
       <!-- Colonne droite : récapitulatif -->
       <div class="border rounded-md p-4 bg-white space-y-4">
         <div class="flex justify-between">
-          <span>Produits</span><span>00$</span>
+          <span>Produits</span><span>00 €</span>
         </div>
         <div class="flex justify-between">
-          <span>Livraison</span><span>00$</span>
+          <span>Livraison</span><span>00 €</span>
         </div>
         <div class="flex justify-between">
-          <span>Promotions</span><span>00$</span>
+          <span>Promotions</span><span>00 €</span>
         </div>
         <div class="flex items-center gap-2">
           <input
@@ -143,7 +149,6 @@ const { basketId } = storeToRefs(userStore);
 const loadedIds = new Set(); // pour éviter les doublons
 const refresh = ref(false);
 const basket = ref([]);
-
 onBeforeMount(async () => {
   // Si l'utilisateur n'est pas authentifié, on récupère ses infos
   if (!userStore.id) {
@@ -151,7 +156,8 @@ onBeforeMount(async () => {
   }
 
   // Si le panier n'est pas déjà chargé
-  if (basketId.value.length > 0 && basket.value.length === 0) {
+  //basketId.value.length > 0 &&
+  if (basket.value.length === 0) {
     try {
       // On charge les produits en une seule fois pour éviter les doublons
       const uniqueProductIds = Array.from(
@@ -204,5 +210,6 @@ function removeFromCart(index: number) {
 
 function clearCart() {
   basket.value = [];
+  userStore.dropBasket();
 }
 </script>

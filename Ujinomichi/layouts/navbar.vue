@@ -41,21 +41,23 @@
             </svg>
           </div>
           <button class="text-white hover:scale-90 transition duration-150">
-            <svg
-              class="h-7 w-7"
-              fill="none"
-              stroke="currentColor"
-              stroke-width="2"
-              viewBox="0 0 24 24"
-            >
-              <circle cx="9" cy="20" r="1.5" />
-              <circle cx="17" cy="20" r="1.5" />
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M5 6h2l3.6 7.59a1 1 0 00.95.41H19a1 1 0 00.98-.8l1.5-8.5A1 1 0 0020.5 4H7"
-              />
-            </svg>
+            <NuxtLink to="/basket">
+              <svg
+                class="h-7 w-7"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                viewBox="0 0 24 24"
+              >
+                <circle cx="9" cy="20" r="1.5" />
+                <circle cx="17" cy="20" r="1.5" />
+                <path
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  d="M5 6h2l3.6 7.59a1 1 0 00.95.41H19a1 1 0 00.98-.8l1.5-8.5A1 1 0 0020.5 4H7"
+                />
+              </svg>
+            </NuxtLink>
           </button>
           <NuxtLink
             to="/login"
@@ -130,7 +132,7 @@
           </div>
 
           <div class="flex justify-center gap-10">
-            <nuxtLink to="/basket">
+            <NuxtLink to="/basket">
               <button class="text-white hover:scale-90 transition duration-150">
                 <svg
                   class="h-7 w-7"
@@ -148,7 +150,7 @@
                   />
                 </svg>
               </button>
-            </nuxtLink>
+            </NuxtLink>
             <NuxtLink
               to="/login"
               class="text-white hover:scale-90 transition duration-150"

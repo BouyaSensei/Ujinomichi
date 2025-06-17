@@ -39,6 +39,13 @@ export default class UsersController {
       check.save()
     }
   }
+  public async removeToBasket({ request, response }: HttpContext) {
+    const user = request.only('userId')
+    const userInfo = await User.findOrFail(user.userId)
+
+    userInfo.basket = null
+    userInfo.save()
+  }
   public async modifyUser({ request, response }: HttpContext) {
     //return response.status(200).json({ userId: request })
     const data = request.all()

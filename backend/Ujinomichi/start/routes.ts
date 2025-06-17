@@ -22,6 +22,7 @@ router.post('/modify-user', [UserController, 'modifyUser'])
 router.post('/get-user-info', [UserController, 'getUserInfo'])
 router.post('/login', [UserController, 'login'])
 router.post('/addToBasket', [UserController, 'addToBasket'])
+router.post('removeToBasket', [UserController, 'removeToBasket'])
 router.get('/create-user-test', [UserController, 'createUserTest'])
 // Product routes
 router.get('/create-product', [ProductController, 'createProductTest'])

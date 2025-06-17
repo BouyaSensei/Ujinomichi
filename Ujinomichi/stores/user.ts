@@ -53,6 +53,12 @@ export const useUserStore = defineStore("user", {
     },
     async dropBasket() {
       try {
+        const userId = this.id;
+        const response = await fetch("api/basket/removeToBasket", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId }),
+        });
       } catch (error) {}
     },
   },
