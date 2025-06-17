@@ -45,6 +45,7 @@ export const useUserStore = defineStore("user", {
         this.wishlist = data.wishlist;
         this.deliveryAddress = data.deliveryAddress;
         this.basketId = JSON.parse(data.basket);
+        return "ok";
       } catch (error) {
         console.error("Error fetching user info:", error);
         throw new Error("Impossible de récupérer les informations utilisateur");

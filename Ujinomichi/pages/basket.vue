@@ -136,53 +136,71 @@
 
 <script setup lang="ts">
 import { storeToRefs } from "pinia";
+
 const userStore = useUserStore();
-const { basketId } = storeToRefs(userStore); // on rend reactive
-const { basket } = storeToRefs(userStore); // on rend reactive
+const authStore = useAuthStore();
+const { basketId } = storeToRefs(userStore);
+const loadedIds = new Set(); // pour éviter les doublons
+const refresh = ref(false);
+const basket = ref([]);
 
 onBeforeMount(async () => {
+  // Si l'utilisateur n'est pas authentifié, on récupère ses infos
   if (!userStore.id) {
     await userStore.getInfo();
-    //console.log(basketId.value);
+  }
 
-    for (const product of basketId.value) {
-      try {
+  // Si le panier n'est pas déjà chargé
+  if (basketId.value.length > 0 && basket.value.length === 0) {
+    try {
+      // On charge les produits en une seule fois pour éviter les doublons
+      const uniqueProductIds = Array.from(
+        new Set(basketId.value.map((item) => item.productId))
+      );
+
+      for (const productId of uniqueProductIds) {
         const res = await fetch(`/api/getSingleProductById/`, {
           method: "POST",
-          body: JSON.stringify(product.productId),
+          body: JSON.stringify(productId),
         });
         const data = await res.json();
 
-        console.log(product);
-        data.quantity = product.productQuantity;
-        console.log(data);
-        basket.value.push(data);
-      } catch (error) {
-        console.error(
-          `Erreur lors de la récupération du produit ${product.productId}:`,
-          error
-        );
+        // On calcule la quantité totale pour ce produit
+        const totalQuantity = basketId.value
+          .filter((item) => item.productId === productId)
+          .reduce((sum, item) => sum + item.productQuantity, 0);
+
+        basket.value.push({
+          ...data,
+          quantity: totalQuantity,
+        });
       }
+    } catch (error) {
+      console.error("Erreur lors du chargement du panier :", error);
     }
   }
 });
 
 onMounted(() => {
-  userStore.getInfo();
+  authStore.checkAuth();
 });
-
+await useAsyncData("basketId", () => userStore.getInfo());
 // Basket réactif
 const cart = computed(() => basket.value || []);
 const quantity = ref(1);
+
 function increment() {
   quantity.value++;
 }
+
 function decrement() {
   if (quantity.value > 1) quantity.value--;
 }
+
 function removeFromCart(index: number) {
   basket.value?.splice(index, 1);
 }
+
 function clearCart() {
   basket.value = [];
 }
