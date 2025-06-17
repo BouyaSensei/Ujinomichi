@@ -186,6 +186,7 @@ onMounted(() => {
 });
 await useAsyncData("basketId", () => userStore.getInfo());
 // Basket réactif
+
 const cart = computed(() => basket.value || []);
 const quantity = ref(1);
 

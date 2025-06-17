@@ -51,5 +51,9 @@ export const useUserStore = defineStore("user", {
         throw new Error("Impossible de récupérer les informations utilisateur");
       }
     },
+    async dropBasket() {
+      try {
+      } catch (error) {}
+    },
   },
 });
