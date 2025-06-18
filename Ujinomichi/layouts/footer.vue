@@ -3,10 +3,10 @@
     <footer class="bg-[#e8dfd5] pt-10 pb-2 w-full">
       <!-- Bandeau d’avantages -->
       <div
-        class="flex flex-col md:flex-row justify-center items-center gap-10 md:mb-12"
+        class="flex flex-col md:flex-row justify-center items-center gap-10 pb-12"
       >
         <!-- Suivi livraison -->
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center w-64">
           <NuxtImg
             src="livraison.png"
             alt="Livraison"
@@ -17,7 +17,7 @@
           >
         </div>
         <!-- Emballages durables -->
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center w-64">
           <NuxtImg
             src="recyclage.png"
             alt="Emballage durable"
@@ -28,7 +28,7 @@
           >
         </div>
         <!-- Paiement sécurisé -->
-        <div class="flex flex-col items-center">
+        <div class="flex flex-col items-center w-64">
           <NuxtImg
             src="paiement-securise.png"
             alt="Paiement sécurisé"
@@ -41,14 +41,12 @@
       </div>
 
       <!-- Bloc principal -->
-      <div
-        class="max-w-6xl mx-auto flex flex-col gap-8 md:gap-0 justify-between px-4 md:px-0 mb-6"
-      >
+      <div class="max-w-6xl flex flex-col gap-6 justify-center mx-auto">
         <!-- Newsletter -->
-        <div class="flex-1 flex items-center justify-center">
-          <form
-            class="w-full max-w-md bg-[#494d42] rounded-2xl px-7 py-8 flex flex-col gap-5"
-          >
+        <div
+          class="flex h-96 bg-[#494d42] rounded-2xl items-center justify-center"
+        >
+          <form class="w-full max-w-4xl px-7 py-8 flex flex-col gap-5">
             <h3
               class="text-center text-xl font-extrabold text-[#faf8f4] mb-2 tracking-widest"
               style="font-family: 'Comic Sans MS', 'Caveat', cursive"
@@ -73,9 +71,11 @@
           </form>
         </div>
         <!-- Colonne Infos -->
-        <div class="flex-1 pt-6 flex flex-col md:flex-row text-center gap-10">
+        <div
+          class="flex-1 flex pt-6 md:py-6 flex-col items-center text-center justify-center gap-10 md:flex-row"
+        >
           <!-- Compagnie -->
-          <div>
+          <div class="w-48">
             <h4 class="font-bold text-[#393E38] mb-2">COMPAGNIE</h4>
             <p class="text-[#393E38] text-base mb-1">
               Uji no Michi<br />
@@ -88,21 +88,8 @@
               >contact@ujinomichi.fr</a
             >
           </div>
-          <!-- Paiement -->
-          <div>
-            <h4 class="font-bold text-[#393E38] mb-2">PAIEMENT</h4>
-            <div class="flex items-center justify-center gap-2">
-              <NuxtImg src="paypal.png" alt="PayPal" class="h-8 w-auto" />
-              <NuxtImg
-                src="mastercard.png"
-                alt="Mastercard"
-                class="h-8 w-auto"
-              />
-              <NuxtImg src="visa.png" alt="Visa" class="h-8 w-auto" />
-            </div>
-          </div>
           <!-- Legal -->
-          <div>
+          <div class="w-48">
             <h4 class="font-bold text-[#393E38] mb-2">LEGAL</h4>
             <ul class="text-[#393E38] space-y-1">
               <li><a href="#" class="underline">Mentions Legales</a></li>
@@ -114,9 +101,21 @@
               </li>
             </ul>
           </div>
+          <!-- Paiement -->
+          <div class="w-48 pb-18">
+            <h4 class="font-bold text-[#393E38] mb-2">PAIEMENT</h4>
+            <div class="flex items-center justify-center gap-2">
+              <NuxtImg src="paypal.png" alt="PayPal" class="h-8 w-auto" />
+              <NuxtImg
+                src="mastercard.png"
+                alt="Mastercard"
+                class="h-8 w-auto"
+              />
+              <NuxtImg src="visa.png" alt="Visa" class="h-8 w-auto" />
+            </div>
+          </div>
         </div>
       </div>
-
       <!-- Bas de footer -->
       <div class="text-center text-[#393E38] text-sm mt-3">
         &copy; 2025 Uji no Michi. Tous droits réservés.
