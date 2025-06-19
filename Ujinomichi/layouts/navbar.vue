@@ -1,7 +1,7 @@
 <template>
-  <nav class="navbar bg-[#363e40]">
+  <nav class="navbar bg-[#4E5548]">
     <div
-      class="headerContainer bg-green-700 text-white p-4 flex justify-center items-center"
+      class="headerContainer bg-[#7C8259] text-white p-4 flex justify-center items-center"
     >
       <h1>contact@ujinomichi.fr - 01 86 45 23 90</h1>
     </div>

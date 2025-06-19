@@ -3,7 +3,8 @@ interface User {
   email: null | string;
   phone_number: null | string;
   orders: null | Array<object>;
-  wishlist: null | Array<object>;
+  wishlistId: string;
+  wishlist: [] | Array<object>;
   deliveryAddress: null | Array<object>;
   basketId: [] | Array<object>;
   basket: [] | Array<object>;
@@ -17,7 +18,8 @@ export const useUserStore = defineStore("user", {
       email: null,
       phone_number: "",
       orders: null,
-      wishlist: null,
+      wishlist: [],
+      wishlistId: "",
       deliveryAddress: null,
       basketId: [],
       basket: [],
@@ -42,7 +44,7 @@ export const useUserStore = defineStore("user", {
         this.email = data.email;
         this.phone_number = data.phoneNumber;
         this.orders = data.commandOrders;
-        this.wishlist = data.wishlist;
+        this.wishlistId = data.wishlist;
         this.deliveryAddress = data.deliveryAddress;
         this.basketId = JSON.parse(data.basket);
       } catch (error) {
@@ -60,6 +62,7 @@ export const useUserStore = defineStore("user", {
         });
       } catch (error) {}
     },
+
     async dropProductFromBasket(productId: number) {
       const userId = this.id;
 
@@ -99,6 +102,48 @@ export const useUserStore = defineStore("user", {
         });
         if (response.ok) {
           return response.status;
+        }
+      } catch (error) {}
+    },
+
+    async getWishList() {
+      const wishId = JSON.parse(this.wishlistId);
+
+      try {
+        wishId.forEach(async (element: any) => {
+          const product = element.productId;
+          const response = await fetch("/api/getSingleProductById", {
+            method: "POST",
+            body: JSON.stringify({ product }),
+          });
+          if (response.ok) {
+            const data: object = await response.json();
+            if (
+              !this.wishlist.filter((element) => element.id === data.id).length
+            ) {
+              this.wishlist.push(data);
+            }
+          }
+        });
+        // console.log(this.wishlist);
+      } catch (error) {
+        console.error("Error fetching wishlist", error);
+        throw new Error(
+          "Impossible de récupérer les informations de la liste de souhait"
+        );
+      }
+    },
+    async dropProductFromWishList(productId: number) {
+      try {
+        const response = await fetch("/api/wishlist/deleteToWishList", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ userId: this.id, productId: productId }),
+        });
+        if (response.ok) {
+          this.wishlist = this.wishlist.filter(
+            (element) => element.id !== productId
+          );
         }
       } catch (error) {}
     },

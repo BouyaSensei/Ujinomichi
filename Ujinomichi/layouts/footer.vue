@@ -44,7 +44,7 @@
       <div class="max-w-6xl flex flex-col gap-6 justify-center mx-auto">
         <!-- Newsletter -->
         <div
-          class="flex h-96 bg-[#494d42] rounded-2xl items-center justify-center"
+          class="flex h-96 bg-[#494d42] rounded-2xl items-center justify-center mx-6"
         >
           <form class="w-full max-w-4xl px-7 py-8 flex flex-col gap-5">
             <h3

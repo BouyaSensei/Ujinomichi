@@ -94,6 +94,7 @@ const phone_number = ref("");
 const password = ref("");*/
 
 const authStore = useAuthStore();
+const userStore = useUserStore();
 //console.log(authStore.isAuthenticated);
 //console.log(authStore.user);
 //console.log(authStore.checkAuth());
@@ -129,5 +130,6 @@ if (!useCookie("token").value) {
 
 onMounted(() => {
   authStore.checkAuth();
+  userStore.getInfo();
 });
 </script>

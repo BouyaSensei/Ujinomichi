@@ -102,6 +102,7 @@
             >
               <!-- Bouton wishlist -->
               <button
+                v-on:click="addToWishList"
                 class="bg-[#f5dfe9] text-white/90 p-2 rounded-full hover:bg-[#ececec] transition focus:outline-none focus:ring-2 focus:ring-[#3E4233]"
                 aria-describedby="tooltip-wishlist"
               >
@@ -109,6 +110,7 @@
               </button>
 
               <!-- Tooltip -->
+
               <div
                 id="tooltip-wishlist"
                 class="absolute left-1/2 -translate-x-1/2 mt-2 whitespace-nowrap text-xs px-3 py-1 rounded bg-[#3E4233] text-white opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition duration-200 z-10"
@@ -222,14 +224,21 @@ const decrement = () => {
 const addToBasket = () => {
   const userId = authStore.user.userId;
   const productQuantity = quantity.value;
-  console.log("check");
+
   fetch("/api/basket/addToBasket", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userId, id, productQuantity }),
   });
 };
-
+const addToWishList = () => {
+  const userId = authStore.user.userId;
+  fetch("/api/wishlist/addToWishList", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ userId, id }),
+  });
+};
 // Optionnel : forcer limite si on tape un chiffre
 const onInputQuantity = (event) => {
   const value = parseInt(event.target.value);

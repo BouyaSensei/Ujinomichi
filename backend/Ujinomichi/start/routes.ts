@@ -26,7 +26,12 @@ router.post('removeToBasket', [UserController, 'removeToBasket'])
 router.post('removeProductToBasket', [UserController, 'removeProductToBasket'])
 router.post('incrementProduct', [UserController, 'incrementProductToBasket'])
 router.post('decrementProduct', [UserController, 'decrementProductToBasket'])
+
+router.post('addToWishList', [UserController, 'addToWishList'])
+router.post('removeToWishList', [UserController, 'removeToWishList'])
+router.post('getWishList', [UserController, 'getWishList'])
 router.get('/create-user-test', [UserController, 'createUserTest'])
+
 // Product routes
 router.get('/create-product', [ProductController, 'createProductTest'])
 router.get('/get-product', [ProductController, 'getAllProducts'])

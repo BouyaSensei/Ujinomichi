@@ -19,7 +19,6 @@ export default class UsersController {
   public async addToBasket({ request, response }: HttpContext) {
     const user = request.only(['userId'])
     const product = request.only(['productId', 'productQuantity'])
-    console.log(user)
     const check = await User.findByOrFail('id', user.userId)
     if (check !== undefined) {
       const productDetails = {
@@ -87,6 +86,47 @@ export default class UsersController {
     })
     userInfo.basket = JSON.stringify(newBasket)
     userInfo.save()
+  }
+  public async addToWishList({ request, response }: HttpContext) {
+    const user = request.only(['userId'])
+    const product = request.only(['productId'])
+    const check = await User.findByOrFail('id', user.userId)
+    if (check !== undefined) {
+      const productDetails = {
+        productId: product.productId,
+      }
+
+      if (check.wishlist !== null) {
+        const currentWishList = JSON.parse(check.wishlist)
+        currentWishList.push(productDetails)
+        check.wishlist = JSON.stringify(currentWishList)
+      } else {
+        check.wishlist = JSON.stringify([productDetails])
+      }
+
+      check.save()
+    }
+  }
+  public async removeToWishList({ request, response }: HttpContext) {
+    const user = request.only(['userId'])
+    const product = request.only(['productId'])
+    const check = await User.findByOrFail('id', user.userId)
+    if (check !== undefined) {
+      let currentWishList = JSON.parse(check.wishlist)
+
+      currentWishList = currentWishList.filter(
+        (item: any) => item.productId !== product.productId.toString()
+      )
+      check.wishlist = JSON.stringify(currentWishList)
+      check.save()
+    }
+  }
+  public async getWishList({ request, response }: HttpContext) {
+    const user = request.only(['userId'])
+
+    const userInfo = await User.findByOrFail('id', user)
+
+    return userInfo.wishlist
   }
   public async modifyUser({ request, response }: HttpContext) {
     //return response.status(200).json({ userId: request })

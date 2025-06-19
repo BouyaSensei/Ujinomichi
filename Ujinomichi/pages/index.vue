@@ -24,14 +24,14 @@
           <div class="flex gap-4">
             <NuxtLink to="/products" class="no-underline">
               <button
-                class="px-8 py-3 rounded-full bg-[#eae4da] text-gray-800 font-bold text-base hover:bg-[#f5eee2] transition"
+                class="px-8 py-3 rounded-full bg-[#E6DBD0] text-[#4E5548] font-bold text-base hover:bg-[#EFE4D9] transition"
               >
                 Nos Produits
               </button>
             </NuxtLink>
 
             <button
-              class="px-8 py-3 rounded-full bg-[#6a765a] text-gray-100 font-bold text-base hover:bg-[#7e8d6a] transition"
+              class="px-8 py-3 rounded-full bg-[#7C8259] text-white font-bold text-base hover:bg-[#727752] transition"
             >
               Nos Partenaires
             </button>
@@ -40,57 +40,59 @@
       </article>
     </section>
     <section id="promotionSection">
-      <div class="overflow-hidden bg-[#393f40] h-12 flex items-center">
+      <div class="overflow-hidden bg-[#4E5548] h-12 flex items-center">
         <div class="marquee flex whitespace-nowrap">
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
           <!-- Répète autant que nécessaire pour la fluidité -->
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
         </div>
       </div>
 
-      <article class="h-132 flex justify-center promotion">
-        <ul class="flex flex-wrap gap-20 justify-center items-center">
-          <li class="flex flex-col items-center">
+      <article class="h-256 md:h-128 lg:h-96 flex justify-center promotion">
+        <ul
+          class="grid md:grid-cols-2 lg:flex lg:flex-row justify-center items-center"
+        >
+          <li class="flex flex-col items-center justify-center size-64">
             <div
-              class="relative w-32 h-32 md:w-42 md:h-42 flex items-center justify-center drop-shadow-lg"
+              class="relative size-32 flex items-center justify-center drop-shadow-lg"
             >
               <svg
                 class="absolute inset-0 w-full h-full"
@@ -114,18 +116,18 @@
               <NuxtImg
                 src="wheat.png"
                 alt="icon ingrédients locaux"
-                class="w-16 h-16 md:w-24 md:h-24 object-contain z-10"
+                class="size-16 object-contain z-10"
               />
             </div>
             <p
-              class="mt-4 text-[#393E38] text-lg font-bold text-center leading-tight uppercase"
+              class="mt-4 text-[#4E5548] text-xl font-bold text-center leading-tight uppercase"
             >
               ingrédients<br />locaux et bio
             </p>
           </li>
-          <li class="flex flex-col items-center">
+          <li class="flex flex-col items-center justify-center size-64">
             <div
-              class="relative w-32 h-32 md:w-42 md:h-42 flex items-center justify-center drop-shadow-lg"
+              class="relative size-32 flex items-center justify-center drop-shadow-lg"
             >
               <svg
                 class="absolute inset-0 w-full h-full"
@@ -149,18 +151,18 @@
               <NuxtImg
                 src="sun.png"
                 alt="icon produits de saison"
-                class="w-16 h-16 md:w-24 md:h-24 object-contain z-10"
+                class="size-16 object-contain z-10"
               />
             </div>
             <p
-              class="mt-4 text-[#393E38] text-lg font-bold text-center leading-tight uppercase"
+              class="mt-4 text-[#4E5548] text-xl font-bold text-center leading-tight uppercase"
             >
               produits de<br />saison
             </p>
           </li>
-          <li class="flex flex-col items-center">
+          <li class="flex flex-col items-center justify-center size-64">
             <div
-              class="relative w-32 h-32 md:w-42 md:h-42 flex items-center justify-center drop-shadow-lg"
+              class="relative size-32 flex items-center justify-center drop-shadow-lg"
             >
               <svg
                 class="absolute inset-0 w-full h-full"
@@ -184,18 +186,18 @@
               <NuxtImg
                 src="trees_1.png"
                 alt="icon biodiversité"
-                class="w-16 h-16 md:w-24 md:h-24 object-contain z-10"
+                class="size-16 object-contain z-10"
               />
             </div>
             <p
-              class="mt-4 text-[#393E38] text-lg font-bold text-center leading-tight uppercase"
+              class="mt-4 text-[#4E5548] text-xl font-bold text-center leading-tight uppercase"
             >
               respect de la<br />biodiversité
             </p>
           </li>
-          <li class="flex flex-col items-center">
+          <li class="flex flex-col items-center justify-center size-64">
             <div
-              class="relative w-32 h-32 md:w-42 md:h-42 flex items-center justify-center drop-shadow-lg"
+              class="relative size-32 flex items-center justify-center drop-shadow-lg"
             >
               <svg
                 class="absolute inset-0 w-full h-full"
@@ -219,57 +221,57 @@
               <NuxtImg
                 src="flask-conical-off.png"
                 alt="icon sans additifs"
-                class="w-16 h-16 md:w-24 md:h-24 object-contain z-10"
+                class="size-16 object-contain z-10"
               />
             </div>
             <p
-              class="mt-4 text-[#393E38] text-lg font-bold text-center leading-tight uppercase"
+              class="mt-4 text-[#4E5548] text-xl font-bold text-center leading-tight uppercase"
             >
               sans additifs<br />ni conservateurs
             </p>
           </li>
         </ul>
       </article>
-      <div class="overflow-hidden bg-[#393f40] h-12 flex items-center">
+      <div class="overflow-hidden bg-[#4E5548] h-12 flex items-center">
         <div class="marquee flex whitespace-nowrap">
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
           <!-- Répète autant que nécessaire pour la fluidité -->
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-          <span class="font-bold text-[#6a765a] uppercase tracking-widest">
+          <span class="font-bold text-[#7C8259] uppercase tracking-widest">
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
@@ -281,7 +283,7 @@
       class="w-full flex flex-col items-center py-8"
     >
       <h2
-        class="text-3xl md:text-4xl font-bold mb-8 text-[#393E38] tracking-widest text-center"
+        class="text-3xl md:text-4xl font-bold mb-8 text-[#4E5548] tracking-widest text-center"
         style="font-family: 'Comic Sans MS', 'Caveat', cursive"
       >
         NOS PRODUITS DU MOMENT
@@ -319,7 +321,7 @@
 
           <!-- Texte descriptif -->
           <div class="p-4 pt-2">
-            <h3 class="text-base font-bold text-[#2d3336] mb-1">
+            <h3 class="text-base font-bold text-[#4E5548] mb-1">
               {{ produit.name }}
             </h3>
             <p class="text-sm text-[#6a765a] mb-3">
@@ -443,6 +445,7 @@
         </div>
       </div>
     </section>
+    <!-- Section : Qui sommes nous ? -->
     <section
       class="w-full max-w-6xl mx-auto my-6 rounded-[2rem] overflow-hidden flex flex-col md:flex-row"
     >
@@ -488,6 +491,7 @@
         />
       </div>
     </section>
+    <!-- Section : Nos partenaires -->
     <section class="w-full max-w-4xl mx-auto my-12 px-6">
       <h2
         class="text-3xl font-extrabold text-[#393E38] tracking-widest text-center pb-8"

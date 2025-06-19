@@ -28,7 +28,8 @@ export default class User extends compose(BaseModel, AuthFinder) {
   declare command_order: string | null
   @column()
   declare payment_method: string | null
-
+  @column()
+  declare wishlist: string | null
   @column()
   declare jwt_token: string | null
 
