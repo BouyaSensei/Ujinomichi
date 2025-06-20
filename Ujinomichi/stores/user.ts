@@ -5,7 +5,7 @@ interface User {
   orders: null | Array<object>;
   wishlistId: string;
   wishlist: [] | Array<object>;
-  deliveryAddress: null | Array<object>;
+  deliveryAddress: [] | Array<object>;
   basketId: [] | Array<object>;
   basket: [] | Array<object>;
   token: string | null;
@@ -20,7 +20,7 @@ export const useUserStore = defineStore("user", {
       orders: null,
       wishlist: [],
       wishlistId: "",
-      deliveryAddress: null,
+      deliveryAddress: [],
       basketId: [],
       basket: [],
       token: useCookie("token").value as string | null,

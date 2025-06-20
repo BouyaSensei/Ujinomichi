@@ -128,6 +128,29 @@ export default class UsersController {
 
     return userInfo.wishlist
   }
+  public async updateAddress({ request, response }: HttpContext) {
+    const data = request.only(['userId', 'delivery_address'])
+    //console.log('address', data)
+    const userInfo = await User.findByOrFail('id', data.userId)
+
+    if (userInfo.delivery_address === null) {
+      console.log(data.delivery_address)
+      userInfo.delivery_address = JSON.stringify([data.delivery_address])
+    } else {
+      const currentAddress = JSON.parse(userInfo.delivery_address)
+      currentAddress.forEach((address: any) => {
+        if (address.address_name === data.delivery_address.address_name) {
+          address = data.delivery_address
+        }
+      })
+      currentAddress.push(data.delivery_address)
+      userInfo.delivery_address = JSON.stringify(currentAddress)
+    }
+    //userInfo.save()
+    console.log(userInfo.delivery_address)
+
+    //return response.status(200).json({ message: 'Address updated successfully' })
+  }
   public async modifyUser({ request, response }: HttpContext) {
     //return response.status(200).json({ userId: request })
     const data = request.all()

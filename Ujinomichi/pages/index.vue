@@ -341,11 +341,11 @@
         </div>
       </div>
     </section>
-    <section id="ProduitsSection" class="px-6 py-10 w-full max-w-7xl mx-auto">
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+    <section id="ProduitsSection" class="px-4 py-10 w-full max-w-7xl mx-auto">
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <!-- Coffrets de saison : grande carte à gauche -->
         <div
-          class="md:col-span-2 relative rounded-3xl overflow-hidden h-[290px] flex items-end"
+          class="md:col-span-2 relative rounded-2xl overflow-hidden h-[290px] flex items-end"
         >
           <NuxtImg
             src="coffret_saison.jpg"
@@ -353,16 +353,15 @@
             class="absolute inset-0 w-full h-full object-cover"
           />
           <div class="absolute inset-0 bg-black/50"></div>
-          <div class="relative z-10 p-6 text-white">
+          <div class="relative z-10 p-6 h-72 text-white">
             <h3
-              class="text-2xl md:text-3xl font-extrabold mb-2 uppercase"
+              class="text-2xl font-extrabold mb-2 uppercase"
               style="letter-spacing: 0.05em"
             >
               Coffrets de saison
             </h3>
-            <p class="text-base md:text-lg font-medium leading-snug">
-              Ces coffrets ont été soigneusement élaborés avec nos
-              partenaires.<br />
+            <p class="text-base font-normal leading-snug">
+              Ces coffrets ont été soigneusement élaborés avec nos partenaires.
               Les boissons qu’ils contiennent sont exclusivement issues des
               récoltes de saison.
             </p>
@@ -371,7 +370,7 @@
 
         <!-- Coffrets thés : à droite, plus petite -->
         <div
-          class="relative rounded-3xl overflow-hidden h-[290px] flex items-end"
+          class="relative rounded-2xl overflow-hidden h-[290px] flex items-end"
         >
           <NuxtImg
             src="coffret_the.jpg"
@@ -395,10 +394,10 @@
       </div>
 
       <!-- Deuxième ligne : coffrets découvertes + alcools -->
-      <div class="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Coffrets découvertes -->
         <div
-          class="relative rounded-3xl overflow-hidden h-[260px] flex items-end"
+          class="relative rounded-2xl overflow-hidden h-[290px] flex items-end"
         >
           <NuxtImg
             src="coffret_decouverte.jpg"
@@ -407,21 +406,21 @@
           />
           <div class="absolute inset-0 bg-black/50"></div>
           <div class="relative z-10 p-6 text-white">
-            <p class="text-base md:text-lg font-medium leading-snug mb-2">
-              Aux côtés de nos partenaires producteurs, nous avons conçu ces
-              coffrets uniques mettant à l’honneur nos boissons incontournables.
-            </p>
             <h3
-              class="text-2xl md:text-3xl font-extrabold uppercase"
+              class="text-2xl font-extrabold uppercase"
               style="letter-spacing: 0.05em"
             >
               Coffrets découvertes
             </h3>
+            <p class="text-base md:text-lg font-medium leading-snug mb-2">
+              Aux côtés de nos partenaires producteurs, nous avons conçu ces
+              coffrets uniques mettant à l’honneur nos boissons incontournables.
+            </p>
           </div>
         </div>
         <!-- Coffrets alcools -->
         <div
-          class="relative rounded-3xl overflow-hidden h-[260px] flex items-end"
+          class="relative rounded-2xl overflow-hidden h-[290px] flex items-end"
         >
           <NuxtImg
             src="coffret_alcool.jpg"
@@ -431,7 +430,7 @@
           <div class="absolute inset-0 bg-black/45"></div>
           <div class="relative z-10 p-6 text-white">
             <h3
-              class="text-2xl md:text-3xl font-extrabold mb-2 uppercase"
+              class="text-2xl font-extrabold mb-2 uppercase"
               style="letter-spacing: 0.05em"
             >
               Coffrets alcools

@@ -8,7 +8,7 @@ export default class extends BaseSchema {
       table.increments('id').notNullable()
       table.string('email', 254).notNullable().unique()
       table.string('phone_number', 255)
-      table.string('delivery_address', 255)
+      table.text('delivery_address')
       table.string('password').notNullable()
       table.string('command_order', 255).nullable()
       table.text('basket').nullable()
