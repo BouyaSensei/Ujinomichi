@@ -45,7 +45,8 @@ export const useUserStore = defineStore("user", {
         this.phone_number = data.phoneNumber;
         this.orders = data.commandOrders;
         this.wishlistId = data.wishlist;
-        this.deliveryAddress = data.deliveryAddress;
+        this.deliveryAddress =
+          data.deliveryAddress == null ? [] : JSON.parse(data.deliveryAddress);
         this.basketId = JSON.parse(data.basket);
       } catch (error) {
         console.error("Error fetching user info:", error);

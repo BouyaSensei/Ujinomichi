@@ -31,7 +31,9 @@ router.post('addToWishList', [UserController, 'addToWishList'])
 router.post('removeToWishList', [UserController, 'removeToWishList'])
 router.post('getWishList', [UserController, 'getWishList'])
 
+router.post('addAddress', [UserController, 'addAddress'])
 router.post('updateAddress', [UserController, 'updateAddress'])
+router.post('deleteAddress', [UserController, 'deleteAddress'])
 router.get('/create-user-test', [UserController, 'createUserTest'])
 
 // Product routes

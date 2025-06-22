@@ -2,7 +2,7 @@
   <section
     class="bg-[#3E4233] text-white p-8 rounded-2xl shadow-lg max-w-4xl mx-auto space-y-6"
   >
-    <h2 class="text-3xl font-bold text-center">📦 Mes adresses</h2>
+    <h2 class="text-3xl font-bold text-center">🏎 Mes adresses</h2>
 
     <div
       v-if="addresses.length === 0"
@@ -98,7 +98,6 @@
             />
           </div>
 
-          <!-- ✅ Code postal -->
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1"
               >Code postal</label
@@ -118,7 +117,6 @@
             />
           </div>
 
-          <!-- ✅ Téléphone -->
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1"
               >Téléphone</label
@@ -150,7 +148,6 @@
             />
           </div>
 
-          <!-- ✅ Numéro (de rue) -->
           <div>
             <label class="block text-sm font-medium text-gray-700 mb-1"
               >Numéro (de rue)</label
@@ -170,25 +167,34 @@
             />
           </div>
         </div>
+
+        <div class="pt-4">
+          <button
+            @click="validateAddress(index)"
+            class="w-full flex items-center justify-center gap-2 bg-[#E9DECF] text-black font-semibold text-base px-6 py-3 rounded-xl shadow hover:bg-[#d4c7b5] transition-all duration-200"
+          >
+            <span
+              v-if="
+                userStore.deliveryAddress.some(
+                  (a) => a.id !== null && a.id === address.id
+                )
+              "
+              >✏️ Mettre à jour cette adresse</span
+            >
+            <span v-else>✅ Valider cette adresse</span>
+          </button>
+        </div>
       </div>
     </div>
 
-    <!-- Boutons -->
     <div class="flex flex-col md:flex-row gap-4 justify-center pt-4">
       <button
+        v-if="openIndexes.length === 0"
         @click="addAddress"
         class="flex items-center justify-center gap-2 bg-[#E9DECF] text-black font-semibold text-base md:text-lg px-6 py-3 rounded-xl shadow hover:bg-[#d4c7b5] transition-all duration-200"
       >
-        <span class="text-purple-600 text-xl">+</span>
-        Ajouter une adresse
-      </button>
-
-      <button
-        @click="submitAddresses"
-        :disabled="addresses.length === 0"
-        class="flex items-center justify-center gap-2 bg-[#E9DECF] text-black font-semibold text-base md:text-lg px-6 py-3 rounded-xl shadow border border-[#c4b8a3] hover:bg-[#d7cbb9] transition-all duration-200 disabled:opacity-60 disabled:cursor-not-allowed"
-      >
-        💾 Enregistrer les adresses
+        <span class="text-purple-600 text-xl">➕</span>
+        Enregistrer une nouvelle adresse
       </button>
     </div>
   </section>
@@ -197,8 +203,9 @@
 <script setup>
 import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
+const userStore = useUserStore();
+const addresses = ref(userStore.deliveryAddress);
 
-const addresses = ref([]);
 const openIndexes = ref([]);
 
 const countryList = [
@@ -237,7 +244,7 @@ const countryList = [
 function addAddress() {
   const newIndex = addresses.value.length;
   addresses.value.push({
-    id: uuidv4(),
+    id: null,
     name: "",
     country: "",
     city: "",
@@ -251,6 +258,18 @@ function addAddress() {
 }
 
 function removeAddress(index) {
+  console.log(addresses.value[index]);
+  fetch("api/address/removeAddressDelivery", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify({
+      userId: userStore.id,
+      address: addresses.value[index],
+    }),
+  }).then((response) => response.json());
+
   addresses.value.splice(index, 1);
   openIndexes.value = openIndexes.value.filter((i) => i !== index);
 }
@@ -263,17 +282,39 @@ function toggleOpen(index) {
   }
 }
 
-async function submitAddresses() {
+async function submitAddresses(address, isUpdate = false) {
   try {
-    const userId = useUserStore().id;
-    const res = await fetch("/api/address/updateMultiple", {
+    console.log(address);
+    const userId = userStore.id;
+    const endpoint = isUpdate
+      ? "/api/address/updateAddressDelivery"
+      : "/api/address/addAddressDelivery";
+    const res = await fetch(endpoint, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ userId, addresses: addresses.value }),
+      body: JSON.stringify({ userId, addresses: address }),
     });
-    if (res.ok) console.log("Adresses enregistrées.");
+
+    if (res.ok) console.log("Adresses soumises.");
   } catch (err) {
     console.error("Erreur lors de la sauvegarde :", err);
   }
+}
+
+function validateAddress(index) {
+  const address = addresses.value[index];
+  const isUpdate = userStore.deliveryAddress.some(
+    (a) => a.id !== null && a.id === address.id
+  );
+
+  if (isUpdate) {
+    console.log("Mise à jour de l'adresse :", address);
+  } else {
+    address.id = uuidv4();
+    console.log("Ajout d'une nouvelle adresse :", address);
+  }
+
+  openIndexes.value = openIndexes.value.filter((i) => i !== index);
+  submitAddresses(address, isUpdate);
 }
 </script>

@@ -1,6 +1,6 @@
 <template>
   <div class="footerContainer">
-    <footer class="bg-[#e8dfd5] pt-10 pb-2 w-full">
+    <footer class="bg-[#E6DBD0] pt-10 pb-2 w-full">
       <!-- Bandeau d’avantages -->
       <div
         class="flex flex-col md:flex-row justify-center items-center gap-10 pb-12"
@@ -12,7 +12,7 @@
             alt="Livraison"
             class="h-16 w-auto mb-3"
           />
-          <span class="text-center text-[#393E38] font-bold text-lg"
+          <span class="text-center text-[#4E5548] font-bold text-lg"
             >SUIVI DE LIVRAISON<br />DISPONIBLE</span
           >
         </div>
@@ -23,7 +23,7 @@
             alt="Emballage durable"
             class="h-16 w-auto mb-3"
           />
-          <span class="text-center text-[#393E38] font-bold text-lg"
+          <span class="text-center text-[#4E5548] font-bold text-lg"
             >EMBALLAGES<br />DURABLES</span
           >
         </div>
@@ -34,7 +34,7 @@
             alt="Paiement sécurisé"
             class="h-16 w-auto mb-3"
           />
-          <span class="text-center text-[#393E38] font-bold text-lg"
+          <span class="text-center text-[#4E5548] font-bold text-lg"
             >PAIEMENT SÉCURISÉ<br />ET RAPIDE</span
           >
         </div>
@@ -44,12 +44,11 @@
       <div class="max-w-6xl flex flex-col gap-6 justify-center mx-auto">
         <!-- Newsletter -->
         <div
-          class="flex h-96 bg-[#494d42] rounded-2xl items-center justify-center mx-6"
+          class="flex h-96 bg-[#4E5548] rounded-2xl items-center justify-center mx-6"
         >
           <form class="w-full max-w-4xl px-7 py-8 flex flex-col gap-5">
             <h3
-              class="text-center text-xl font-extrabold text-[#faf8f4] mb-2 tracking-widest"
-              style="font-family: 'Comic Sans MS', 'Caveat', cursive"
+              class="text-center text-xl font-bold text-[#faf8f4] mb-2 tracking-widest md:text-2xl"
             >
               NE MANQUEZ PAS NOS NOUVEAUX<br />ARRIVAGES ET PROMOTIONS
             </h3>
@@ -60,7 +59,7 @@
             />
             <button
               type="submit"
-              class="rounded-xl w-full px-4 py-3 bg-[#e8dfd5] text-[#393E38] font-bold text-lg transition-colors hover:bg-[#cac2b4]"
+              class="rounded-xl w-full px-4 py-3 bg-[#E6DBD0] text-[#4E5548] font-bold text-lg transition-colors hover:bg-[#cac2b4]"
             >
               JE M’INSCRIS !
             </button>
@@ -76,22 +75,22 @@
         >
           <!-- Compagnie -->
           <div class="w-48">
-            <h4 class="font-bold text-[#393E38] mb-2">COMPAGNIE</h4>
-            <p class="text-[#393E38] text-base mb-1">
+            <h4 class="font-bold text-[#4E5548] mb-2">COMPAGNIE</h4>
+            <p class="text-[#4E5548] text-base mb-1">
               Uji no Michi<br />
               12 Rue de la Tradition,<br />
               75001 Paris, France
             </p>
             <a
               href="mailto:contact@ujinomichi.fr"
-              class="text-[#393E38] underline"
+              class="text-[#4E5548] underline"
               >contact@ujinomichi.fr</a
             >
           </div>
           <!-- Legal -->
           <div class="w-48">
-            <h4 class="font-bold text-[#393E38] mb-2">LEGAL</h4>
-            <ul class="text-[#393E38] space-y-1">
+            <h4 class="font-bold text-[#4E5548] mb-2">LEGAL</h4>
+            <ul class="text-[#4E5548] space-y-1">
               <li><a href="#" class="underline">Mentions Legales</a></li>
               <li>
                 <a href="#" class="underline">Politique de confidentialité</a>
@@ -103,7 +102,7 @@
           </div>
           <!-- Paiement -->
           <div class="w-48 pb-18">
-            <h4 class="font-bold text-[#393E38] mb-2">PAIEMENT</h4>
+            <h4 class="font-bold text-[#4E5548] mb-2">PAIEMENT</h4>
             <div class="flex items-center justify-center gap-2">
               <NuxtImg src="paypal.png" alt="PayPal" class="h-8 w-auto" />
               <NuxtImg
@@ -117,7 +116,7 @@
         </div>
       </div>
       <!-- Bas de footer -->
-      <div class="text-center text-[#393E38] text-sm mt-3">
+      <div class="text-center text-[#4E5548] text-sm mt-3">
         &copy; 2025 Uji no Michi. Tous droits réservés.
       </div>
     </footer>

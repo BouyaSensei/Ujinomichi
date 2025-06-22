@@ -10,21 +10,21 @@
           fill
           style="z-index: 0"
         />
-        <!-- Overlay sombre, optionnel (améliore lisibilité) -->
+        <!-- Overlay sombre -->
         <div class="absolute inset-0 bg-black opacity-50 z-10"></div>
         <!-- Contenu centré superposé -->
         <div
           class="absolute inset-0 flex flex-col items-center justify-center text-center z-20"
         >
           <h2
-            class="text-white text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-[Comic_Neue] tracking-widest drop-shadow-lg uppercase"
+            class="text-white mx-2 text-3xl md:text-4xl lg:text-5xl font-bold mb-8 font-[Comic_Neue] tracking-widest drop-shadow-lg uppercase"
           >
-            l'art de la production<br />japonaise locale
+            l'art de l'agriculture<br />japonaise
           </h2>
-          <div class="flex gap-4">
+          <div class="flex gap-3">
             <NuxtLink to="/products" class="no-underline">
               <button
-                class="px-8 py-3 rounded-full bg-[#E6DBD0] text-[#4E5548] font-bold text-base hover:bg-[#EFE4D9] transition"
+                class="px-8 py-3 rounded-full w-48 bg-[#E6DBD0] text-[#4E5548] font-bold text-base hover:bg-[#EFE4D9] transition"
               >
                 Nos Produits
               </button>
@@ -278,13 +278,13 @@
         </div>
       </div>
     </section>
+    <!-- Section produit du moment-->
     <section
       id="SelectionSection"
       class="w-full flex flex-col items-center py-8"
     >
       <h2
-        class="text-3xl md:text-4xl font-bold mb-8 text-[#4E5548] tracking-widest text-center"
-        style="font-family: 'Comic Sans MS', 'Caveat', cursive"
+        class="text-2xl font-bold mb-8 text-[#4E5548] tracking-widest text-center"
       >
         NOS PRODUITS DU MOMENT
       </h2>
@@ -345,7 +345,7 @@
       <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
         <!-- Coffrets de saison : grande carte à gauche -->
         <div
-          class="md:col-span-2 relative rounded-2xl overflow-hidden h-[290px] flex items-end"
+          class="md:col-span-2 relative rounded-xl overflow-hidden h-[290px] flex items-end"
         >
           <NuxtImg
             src="coffret_saison.jpg"
@@ -353,14 +353,14 @@
             class="absolute inset-0 w-full h-full object-cover"
           />
           <div class="absolute inset-0 bg-black/50"></div>
-          <div class="relative z-10 p-6 h-72 text-white">
+          <div class="relative z-10 p-6 text-white">
             <h3
               class="text-2xl font-extrabold mb-2 uppercase"
               style="letter-spacing: 0.05em"
             >
               Coffrets de saison
             </h3>
-            <p class="text-base font-normal leading-snug">
+            <p class="text-base font-medium leading-snug">
               Ces coffrets ont été soigneusement élaborés avec nos partenaires.
               Les boissons qu’ils contiennent sont exclusivement issues des
               récoltes de saison.
@@ -370,7 +370,7 @@
 
         <!-- Coffrets thés : à droite, plus petite -->
         <div
-          class="relative rounded-2xl overflow-hidden h-[290px] flex items-end"
+          class="relative rounded-xl overflow-hidden h-[290px] flex items-end"
         >
           <NuxtImg
             src="coffret_the.jpg"
@@ -397,7 +397,7 @@
       <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4">
         <!-- Coffrets découvertes -->
         <div
-          class="relative rounded-2xl overflow-hidden h-[290px] flex items-end"
+          class="relative rounded-xl overflow-hidden h-[290px] flex items-end"
         >
           <NuxtImg
             src="coffret_decouverte.jpg"
@@ -420,7 +420,7 @@
         </div>
         <!-- Coffrets alcools -->
         <div
-          class="relative rounded-2xl overflow-hidden h-[290px] flex items-end"
+          class="relative rounded-xl overflow-hidden h-[290px] flex items-end"
         >
           <NuxtImg
             src="coffret_alcool.jpg"
@@ -446,88 +446,92 @@
     </section>
     <!-- Section : Qui sommes nous ? -->
     <section
-      class="w-full max-w-6xl mx-auto my-6 rounded-[2rem] overflow-hidden flex flex-col md:flex-row"
+      class="w-full bg-[#4E5548] my-6 overflow-hidden flex flex-col items-center md:h-165"
     >
-      <!-- Bloc texte -->
-      <div
-        class="bg-[#494d42] flex-1 h-128 px-10 py-12 flex flex-col justify-center"
-      >
-        <h2
-          class="text-3xl font-extrabold mb-8 text-white tracking-widest"
-          style="font-family: 'Comic Sans MS', 'Caveat', cursive"
-        >
-          QUI SOMMES-NOUS ?
-        </h2>
-        <div class="text-left text-[#faf8f4] space-y-5">
-          <p class="font-bold text-lg">
-            Une approche transparente et responsable
-          </p>
-          <p>
-            Cette plateforme est née d’une collaboration directe avec des
-            producteurs locaux japonais et des associations agricoles
-            régionales, dans le but de vous offrir des boissons authentiques,
-            directement issues de l’agriculture japonaise.
-          </p>
-          <p>
-            Nous avons souhaité créer un point d’entrée unique pour les
-            consommateurs français, facilitant l’accès à des produits japonais
-            de qualité et en soutenant les brasseurs et cultivateurs locaux.
-          </p>
-          <p>
-            En choisissant nos produits, vous soutenez directement ces
-            producteurs japonais, vous contribuez à soutenir une agriculture
-            responsable et locale, tout en découvrant le meilleur de la
-            production japonaise.
-          </p>
+      <div class="lg:w-full lg:max-w-300 relative">
+        <!-- Bloc image + texte -->
+        <div class="md:flex md:flew-row md:h-165 md:px-4 md:py-4">
+          <!-- image -->
+          <div class="flex-1 min-h-[270px] relative">
+            <NuxtImg
+              src="nous.jpg"
+              alt="Un verre de matcha sur une table en bois"
+              class="absolute inset-0 w-full h-full object-cover md:rounded-xl"
+            />
+          </div>
+          <!-- texte -->
+          <div
+            class="flex-1 px-10 my-8 mx-auto md:my-0 md:top-0 md:h-108 flex flex-col justify-center"
+          >
+            <h2 class="text-2xl font-bold mb-6 text-white tracking-widest">
+              QUI SOMMES-NOUS ?
+            </h2>
+            <div class="text-left text-[#faf8f4] space-y-5">
+              <p class="font-bold text-md lg:text-lg">
+                Une approche transparente et responsable
+              </p>
+              <p class="text-sm lg:text-md">
+                Cette plateforme est née d’une collaboration directe avec des
+                producteurs locaux japonais et des associations agricoles
+                régionales, dans le but de vous offrir des boissons
+                authentiques, directement issues de l’agriculture japonaise.
+              </p>
+              <p class="text-sm lg:text-md">
+                Nous avons souhaité créer un point d’entrée unique pour les
+                consommateurs français, facilitant l’accès à des produits
+                japonais de qualité et en soutenant les brasseurs et
+                cultivateurs locaux.
+              </p>
+              <p class="text-sm lg:text-md">
+                En choisissant nos produits, vous soutenez directement ces
+                producteurs japonais, vous contribuez à soutenir une agriculture
+                responsable et locale, tout en découvrant le meilleur de la
+                production japonaise.
+              </p>
+            </div>
+          </div>
         </div>
-      </div>
-      <!-- Bloc image -->
-      <div class="flex-1 min-h-[350px] relative">
-        <NuxtImg
-          src="nous.jpg"
-          alt="Un verre de matcha sur une table en bois"
-          class="absolute inset-0 w-full h-full object-cover"
-        />
-      </div>
-    </section>
-    <!-- Section : Nos partenaires -->
-    <section class="w-full max-w-4xl mx-auto my-12 px-6">
-      <h2
-        class="text-3xl font-extrabold text-[#393E38] tracking-widest text-center pb-8"
-        style="font-family: 'Comic Sans MS', 'Caveat', cursive"
-      >
-        NOS PARTENAIRES
-      </h2>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <!-- Carte Zen-Noh -->
+        <!-- Bloc partenaire -->
         <div
-          class="bg-[#f5f3ee] rounded-2xl flex items-center justify-center h-36 shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-2"
+          class="bg-[#ffffff] mb-4 w-full md:w-full md:max-w-200 md:absolute md:right-0 md:bottom-0 md:rounded-lg md:outline-22 outline-[#4E5548]"
         >
-          <NuxtImg
-            src="zennoh.png"
-            alt="Zen-Noh"
-            class="h-20 w-auto object-contain px-2"
-          />
-        </div>
-        <!-- Carte Japanese Sake -->
-        <div
-          class="bg-[#f5f3ee] rounded-2xl flex items-center justify-center h-36 shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-2"
-        >
-          <NuxtImg
-            src="japanese-sake.png"
-            alt="Japanese Sake"
-            class="h-20 w-auto object-contain"
-          />
-        </div>
-        <!-- Carte JOAA -->
-        <div
-          class="bg-[#f5f3ee] rounded-2xl flex items-center justify-center h-36 shadow-md hover:shadow-xl transition-all duration-200 hover:-translate-y-2"
-        >
-          <NuxtImg
-            src="joaa.png"
-            alt="JOAA"
-            class="h-20 w-auto object-contain px-2"
-          />
+          <h2
+            class="text-2xl font-bold text-[#393E38] tracking-widest text-center py-6"
+          >
+            NOS PARTENAIRES
+          </h2>
+          <div class="grid grid-cols-1 md:grid-cols-3">
+            <!-- Carte Zen-Noh -->
+            <div
+              class="flex items-center justify-center h-24 hover:shadow-xl transition-all duration-200 hover:-translate-y-2"
+            >
+              <NuxtImg
+                src="zennoh.png"
+                alt="Zen-Noh"
+                class="h-8 w-auto object-contain"
+              />
+            </div>
+            <!-- Carte Japanese Sake -->
+            <div
+              class="flex items-center justify-center h-24 hover:shadow-xl transition-all duration-200 hover:-translate-y-2"
+            >
+              <NuxtImg
+                src="japanese-sake.png"
+                alt="Japanese Sake"
+                class="h-12 w-auto object-contain"
+              />
+            </div>
+            <!-- Carte JOAA -->
+            <div
+              class="flex items-center justify-center h-24 hover:shadow-xl transition-all duration-200 hover:-translate-y-2"
+            >
+              <NuxtImg
+                src="joaa.png"
+                alt="JOAA"
+                class="h-12 w-auto object-contain"
+              />
+            </div>
+          </div>
         </div>
       </div>
     </section>
