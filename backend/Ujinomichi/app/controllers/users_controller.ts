@@ -47,7 +47,6 @@ export default class UsersController {
   }
   public async removeProductToBasket({ request, response }: HttpContext) {
     const user = request.only(['userId', 'productId'])
-    console.log(user.productId)
     const userInfo = await User.findOrFail(user.userId)
     const products = JSON.parse(userInfo.basket)
     const newBasket: Array<[]> = products.filter(
@@ -208,7 +207,6 @@ export default class UsersController {
       const password = request.input('password')
       //await auth.use('web').attempt(email, password)
       const user = await User.findBy('email', email)
-      console.log(password)
       if (!user || !(await hash.verify(user.password, password))) {
         throw new Error('Invalid credentials')
       }
@@ -233,7 +231,7 @@ export default class UsersController {
         throw new Error('User already exists')
       }
       const user = await User.create(userData)
-      console.log(user)
+      //console.log(user)
       return response.created(user)
     } catch (error) {
       console.error(error)
