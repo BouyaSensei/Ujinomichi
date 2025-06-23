@@ -19,9 +19,6 @@ export default defineEventHandler(async (event) => {
 
       event.node.res.statusCode = 200;
       return { message: "Login successful", token: token };
-    } else {
-      event.node.res.statusCode = res.status;
-      return { message: "Login failed" };
     }
   } catch (error) {
     event.node.res.statusCode = 500;

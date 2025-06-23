@@ -31,26 +31,31 @@
 </template>
 
 <script setup>
+import { useToast } from "vue-toastification";
+const toast = useToast();
 const props = defineProps({
   image: String,
   name: String,
   price: String,
   id: Number,
 });
+
 const userStore = useUserStore();
 
-function addToBasket() {
+async function addToBasket() {
   const userId = userStore.id;
   const productQuantity = 1;
   const id = props.id;
   try {
-    const response = fetch("/api/basket/addToBasket", {
+    const response = await fetch("/api/basket/addToBasket", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, id, productQuantity }),
     });
+
     if (response.ok) {
-      removeToWishlist();
+      userStore.dropProductFromWishList(props.id);
+      toast.success("Produit ajouté au panier avec succès !");
       return response.status;
     }
   } catch (error) {
@@ -59,6 +64,7 @@ function addToBasket() {
 }
 function removeToWishlist() {
   console.log(props.id);
+  toast.success("Produit supprimé de la liste de souhaits avec succès !");
   userStore.dropProductFromWishList(props.id);
 }
 </script>

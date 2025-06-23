@@ -92,6 +92,8 @@ const router = useRouter();
 /*const email = ref("");
 const phone_number = ref("");
 const password = ref("");*/
+import { useToast } from "vue-toastification";
+const toast = useToast();
 
 const authStore = useAuthStore();
 const userStore = useUserStore();
@@ -114,6 +116,7 @@ async function logout() {
   authStore.logout();
   router.push("/login");
   navigateTo("/login");
+  toast.success("Déconnexion réussie !", { timeout: 2000 });
 }
 if (useCookie("token").value) {
   authStore.token = useCookie("token").value;
@@ -122,10 +125,16 @@ if (useCookie("token").value) {
 if (!authStore.isAuthenticated && !useCookie("token")) {
   router.push("/login");
   navigateTo("/login");
+  toast.error("Vous devez vous connecter pour accéder à cette page", {
+    timeout: 2000,
+  });
 }
 if (!useCookie("token").value) {
   router.push("/login");
   navigateTo("/login");
+  toast.error("Vous devez vous connecter pour accéder à cette page", {
+    timeout: 2000,
+  });
 }
 
 onMounted(() => {

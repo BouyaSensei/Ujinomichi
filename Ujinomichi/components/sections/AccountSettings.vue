@@ -80,8 +80,10 @@
 
 <script setup>
 import { ref, onMounted } from "vue";
+import { useToast } from "vue-toastification";
 const store = useAuthStore();
 const userStore = useUserStore();
+const toast = useToast();
 
 const email = ref(userStore.email);
 const password = ref("");
@@ -130,7 +132,7 @@ async function confirmModify() {
       token: token.value,
     }),
   });
-
+  toast.success("Informations modifiées avec succès!");
   closeModal(); // ferme le modal après la modification
 }
 

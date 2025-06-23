@@ -12,14 +12,14 @@
       >
         <!-- Logo -->
         <NuxtLink to="/">
-          <h2 class="text-white font-bold uppercase tracking-widest text-3xl">
+          <h2 class="text-white nanumfont uppercase tracking-widest text-4xl">
             Ujinomichi
           </h2>
         </NuxtLink>
 
         <!-- Desktop menu -->
         <div class="hidden md:flex items-center gap-6">
-          <div class="relative w-64">
+          <!--<div class="relative w-64">
             <input
               type="text"
               class="w-full h-10 pl-5 pr-10 rounded-full bg-white focus:outline-none text-gray-800 text-base"
@@ -39,7 +39,7 @@
                 d="M21 21l-4.35-4.35m0 0A7.5 7.5 0 104.5 4.5a7.5 7.5 0 0012.15 12.15z"
               />
             </svg>
-          </div>
+          </div> -->
           <button class="text-white hover:scale-90 transition duration-150">
             <NuxtLink to="/basket">
               <svg
@@ -107,7 +107,7 @@
             class="block text-center text-white uppercase font-bold text-xl tracking-wider"
             >Accueil</NuxtLink
           >
-
+          <!--
           <div class="relative w-full">
             <input
               type="text"
@@ -130,7 +130,7 @@
               />
             </svg>
           </div>
-
+        -->
           <div class="flex justify-center gap-10">
             <NuxtLink to="/basket">
               <button class="text-white hover:scale-90 transition duration-150">

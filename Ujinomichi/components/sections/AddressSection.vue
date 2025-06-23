@@ -205,7 +205,8 @@ import { ref } from "vue";
 import { v4 as uuidv4 } from "uuid";
 const userStore = useUserStore();
 const addresses = ref(userStore.deliveryAddress);
-
+import { useToast } from "vue-toastification";
+const toast = useToast();
 const openIndexes = ref([]);
 
 const countryList = [
@@ -258,7 +259,6 @@ function addAddress() {
 }
 
 function removeAddress(index) {
-  console.log(addresses.value[index]);
   fetch("api/address/removeAddressDelivery", {
     method: "POST",
     headers: {
@@ -270,6 +270,7 @@ function removeAddress(index) {
     }),
   }).then((response) => response.json());
 
+  toast.success("Adresse supprimée avec succès");
   addresses.value.splice(index, 1);
   openIndexes.value = openIndexes.value.filter((i) => i !== index);
 }
@@ -295,9 +296,16 @@ async function submitAddresses(address, isUpdate = false) {
       body: JSON.stringify({ userId, addresses: address }),
     });
 
-    if (res.ok) console.log("Adresses soumises.");
+    if (res.ok) {
+      if (isUpdate) {
+        toast.success("Adresse mise à jour avec succès");
+      } else {
+        toast.success("Adresse ajoutée avec succès");
+      }
+    }
   } catch (err) {
     console.error("Erreur lors de la sauvegarde :", err);
+    toast.error("Erreur lors de la sauvegarde");
   }
 }
 

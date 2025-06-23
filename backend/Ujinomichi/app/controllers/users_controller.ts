@@ -51,7 +51,7 @@ export default class UsersController {
     const userInfo = await User.findOrFail(user.userId)
     const products = JSON.parse(userInfo.basket)
     const newBasket: Array<[]> = products.filter(
-      (product: any) => product.productId !== user.productId.toString()
+      (product: any) => product.productId !== user.productId
     )
     userInfo.basket = JSON.stringify(newBasket)
     userInfo.save()
@@ -61,8 +61,9 @@ export default class UsersController {
     const userInfo = await User.findOrFail(user.userId)
     const products = JSON.parse(userInfo.basket)
     const newBasket: Array<[]> = []
+
     products.forEach((product: any) => {
-      if (product.productId === user.productId.toString()) {
+      if (product.productId === user.productId) {
         product.productQuantity++
       }
       newBasket.push(product)
@@ -70,6 +71,7 @@ export default class UsersController {
 
     //console.log(newBasket)
     userInfo.basket = JSON.stringify(newBasket)
+    //console.log(userInfo.basket)
     userInfo.save()
   }
   public async decrementProductToBasket({ request, response }: HttpContext) {
@@ -79,12 +81,14 @@ export default class UsersController {
     const products = JSON.parse(userInfo.basket)
     const newBasket: Array<[]> = []
     products.forEach((product: any) => {
-      if (product.productId === user.productId.toString()) {
+      if (product.productId === user.productId) {
         product.productQuantity = product.productQuantity - 1
       }
       newBasket.push(product)
     })
+
     userInfo.basket = JSON.stringify(newBasket)
+    //console.log(userInfo.basket)
     userInfo.save()
   }
   public async addToWishList({ request, response }: HttpContext) {

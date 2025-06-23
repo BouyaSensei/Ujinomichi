@@ -208,6 +208,8 @@
 
 <script setup>
 import { useRoute } from "vue-router";
+import { useToast } from "vue-toastification";
+const toast = useToast();
 const id = useRoute().params.id;
 
 const route = useRoute();
@@ -224,12 +226,12 @@ const decrement = () => {
 const addToBasket = () => {
   const userId = authStore.user.userId;
   const productQuantity = quantity.value;
-
   fetch("/api/basket/addToBasket", {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userId, id, productQuantity }),
   });
+  toast.success("Produit ajouté au panier avec succès !");
 };
 const addToWishList = () => {
   const userId = authStore.user.userId;
@@ -238,6 +240,7 @@ const addToWishList = () => {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userId, id }),
   });
+  toast.success("Produit ajouté à la liste de souhaits avec succès !");
 };
 // Optionnel : forcer limite si on tape un chiffre
 const onInputQuantity = (event) => {

@@ -1,4 +1,5 @@
 <template>
+  <!--
   <div class="space-y-3">
     <OrderCard
       number="1"
@@ -15,6 +16,8 @@
       image="/images/commande2.jpg"
     />
   </div>
+  -->
+  <div class="space-y-3">Aucune commande pour le moment</div>
 </template>
 
 <script setup>

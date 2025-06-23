@@ -47,11 +47,11 @@
           class="flex h-96 bg-[#4E5548] rounded-2xl items-center justify-center mx-6"
         >
           <form class="w-full max-w-4xl px-7 py-8 flex flex-col gap-5">
-            <h3
-              class="text-center text-xl font-bold text-[#faf8f4] mb-2 tracking-widest md:text-2xl"
+            <h2
+              class="text-center text-2xl font-bold text-[#faf8f4] mb-2 tracking-widest md:text-3xl"
             >
               NE MANQUEZ PAS NOS NOUVEAUX<br />ARRIVAGES ET PROMOTIONS
-            </h3>
+            </h2>
             <input
               type="email"
               placeholder="Adresse email"
@@ -74,7 +74,7 @@
           class="flex-1 flex pt-6 md:py-6 flex-col items-center text-center justify-center gap-10 md:flex-row"
         >
           <!-- Compagnie -->
-          <div class="w-48">
+          <div class="w-48 md:h-44">
             <h4 class="font-bold text-[#4E5548] mb-2">COMPAGNIE</h4>
             <p class="text-[#4E5548] text-base mb-1">
               Uji no Michi<br />
@@ -88,7 +88,7 @@
             >
           </div>
           <!-- Legal -->
-          <div class="w-48">
+          <div class="w-48 h-44">
             <h4 class="font-bold text-[#4E5548] mb-2">LEGAL</h4>
             <ul class="text-[#4E5548] space-y-1">
               <li><a href="#" class="underline">Mentions Legales</a></li>
@@ -101,7 +101,7 @@
             </ul>
           </div>
           <!-- Paiement -->
-          <div class="w-48 pb-18">
+          <div class="w-48 pb-18 md:h-44">
             <h4 class="font-bold text-[#4E5548] mb-2">PAIEMENT</h4>
             <div class="flex items-center justify-center gap-2">
               <NuxtImg src="paypal.png" alt="PayPal" class="h-8 w-auto" />

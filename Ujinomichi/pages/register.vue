@@ -79,6 +79,8 @@
 <script setup>
 const email = ref();
 const password = ref();
+import { useToast } from "vue-toastification";
+const toast = useToast();
 
 async function handleSubmit(e) {
   e.preventDefault();
@@ -94,11 +96,13 @@ async function handleSubmit(e) {
     .then((response) => response.json())
     .then((data) => {
       if (data.message === "register successful") {
+        toast.success("Inscription réussie !", { timeout: 2000 });
         useRouter().push("/login");
         navigateTo("/login");
       }
     })
     .catch((error) => {
+      toast.error("Erreur lors de l'inscription.", { timeout: 2000 });
       console.error("Error:", error);
     });
 }

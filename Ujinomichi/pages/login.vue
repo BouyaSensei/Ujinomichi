@@ -73,13 +73,14 @@
           <div class="flex-1 border-t border-[#bfc1b4]"></div>
         </div>
         <!-- Google bouton -->
-        <button
+        <!--<button
           type="button"
           class="w-full flex items-center justify-center border border-[#bfc1b4] rounded-md py-2 bg-white text-[#333] font-semibold hover:bg-[#f1f1eb] transition"
         >
           <NuxtImg src="google-logo.png" alt="Google" class="h-5 w-5 mr-2" />
           Connectez-vous avec Google
         </button>
+        -->
         <!-- Lien inscription -->
         <div class="text-center text-xs mt-3">
           Pas de compte ?
@@ -94,17 +95,26 @@
   </div>
 </template>
 <script setup lang="ts">
+import { useToast } from "vue-toastification";
 const email = ref("");
 const password = ref("");
 const success = ref();
 const router = useRouter();
 const authStore = useAuthStore();
-async function login() {
+const toast = useToast();
+
+async function login(e) {
+  e.preventDefault();
   try {
     await authStore.login(email.value, password.value);
+    console.log(toast);
+    toast.success("Connexion réussie !", { timeout: 2000 });
     router.push("/dashboard_user");
   } catch (error) {
     success.value = false;
+    toast.error("Connexion Echouée , vérifiez vos informations !", {
+      timeout: 2000,
+    });
     //console.log(error);
   }
 }

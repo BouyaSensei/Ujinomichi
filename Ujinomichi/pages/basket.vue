@@ -133,10 +133,11 @@ import { storeToRefs } from "pinia";
 
 const userStore = useUserStore();
 const authStore = useAuthStore();
+import { useToast } from "vue-toastification";
 const { basketId } = storeToRefs(userStore);
 const basket = ref([]);
 const router = useRouter();
-
+const toast = useToast();
 await useAsyncData("token", () => authStore.checkAuth());
 await useAsyncData("basketId", () => userStore.getInfo());
 
@@ -202,11 +203,13 @@ function decrement(index: number, productId: number) {
 
 function removeFromCart(index: number, productId: number) {
   userStore.dropProductFromBasket(productId);
+  toast.success("Produit supprimé du panier");
   basket.value.splice(index, 1);
 }
 
 function clearCart() {
   basket.value = [];
   userStore.dropBasket();
+  toast.success("Panier vidé");
 }
 </script>
