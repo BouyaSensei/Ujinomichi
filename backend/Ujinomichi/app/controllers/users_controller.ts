@@ -220,4 +220,20 @@ export default class UsersController {
       return response.badRequest({ error: 'Invalid credentials' })
     }
   }
+  public async register({ request, response }) {
+    const userData = request.only(['email', 'password'])
+
+    try {
+      const check = await User.findBy('email', userData.email)
+      if (check) {
+        throw new Error('User already exists')
+      }
+      const user = await User.create(userData)
+      console.log(user)
+      return response.created(user)
+    } catch (error) {
+      console.error(error)
+      return response.badRequest({ error: 'Could not create user' })
+    }
+  }
 }

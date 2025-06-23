@@ -1,3 +1,6 @@
+@import url("https://fonts.googleapis.com/css2?family=Caveat+Brush&display=swap");
+@import "tailwindcss";
+
 .headerContainer {
   background-color: #6a765a;
 }
@@ -25,4 +28,9 @@
 }
 .marquee {
   animation: marquee 70s linear infinite;
+}
+.caveat-brush-regular {
+  font-family: "Caveat Brush", cursive;
+  font-weight: 400;
+  font-style: normal;
 }
