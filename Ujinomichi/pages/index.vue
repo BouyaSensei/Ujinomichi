@@ -86,7 +86,71 @@
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
         </div>
       </div>
+      <!-- Section produit du moment-->
+      <section
+        id="SelectionSection"
+        class="w-full flex flex-col items-center pb-12 pt-2"
+      >
+        <h2
+          class="text-3xl font-bold mt-8 mb-12 mx-4 text-[#4E5548] tracking-widest text-center"
+        >
+          NOS PRODUITS DU MOMENT
+        </h2>
+        <div
+          class="grid grid-cols-1 md:grid-cols-3 xl:grid-cols-5 gap-4 place-content-center"
+        >
+          <!-- Card produit -->
+          <div
+            v-for="produit in produits"
+            :key="produit.id"
+            class="group w-full max-w-[220px] h-88 mx-4 flex flex-col items-center text-center bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1"
+          >
+            <!-- Image du produit -->
+            <div class="relative w-full h-40">
+              <NuxtImg
+                :src="produit.imageUrl"
+                :alt="produit.name"
+                class="w-full h-full object-cover"
+              />
+            </div>
 
+            <!-- Icône flottante entre image et texte -->
+            <div class="relative -mt-6 z-10">
+              <div
+                class="backdrop-blur-sm bg-white/70 p-2 rounded-full shadow-md"
+              >
+                <img
+                  :src="getIconByType(produit.type)"
+                  :alt="produit.type"
+                  class="w-6 h-6"
+                />
+              </div>
+            </div>
+
+            <!-- Texte descriptif -->
+            <div class="p-4 pt-2">
+              <h3 class="text-base font-bold text-[#4E5548] mb-1">
+                {{ produit.name }}
+              </h3>
+              <p class="text-sm text-[#6a765a] mb-3">
+                {{
+                  produit.description ||
+                  "Une expérience authentique et raffinée."
+                }}
+              </p>
+              <span class="block text-sm font-medium text-[#4a524a] mb-2"
+                >{{ produit.price }} €</span
+              >
+              <NuxtLink
+                :to="{ name: 'products-id', params: { id: produit.id } }"
+                class="px-4 py-2 rounded-full bg-[#6a765a] text-white text-sm font-semibold hover:bg-[#5a644e] transition-colors duration-300"
+              >
+                Acheter</NuxtLink
+              >
+            </div>
+          </div>
+        </div>
+      </section>
       <div class="overflow-hidden bg-[#4E5548] h-12 flex items-center">
         <div class="marquee flex whitespace-nowrap">
           <span class="font-bold text-[#7C8259] uppercase tracking-widest">
@@ -130,70 +194,6 @@
             des produits issus directement de l'agriculture japonaise
           </span>
           <NuxtImg src="/flower.png" class="inline h-7 w-7 mx-4 align-middle" />
-        </div>
-      </div>
-    </section>
-    <!-- Section produit du moment-->
-    <section
-      id="SelectionSection"
-      class="w-full flex flex-col items-center py-8"
-    >
-      <h2
-        class="text-3xl font-bold mb-8 mx-4 text-[#4E5548] tracking-widest text-center"
-      >
-        NOS PRODUITS DU MOMENT
-      </h2>
-      <div
-        class="w-full flex items-center flex-col justify-center md:flex md:flex-row gap-8"
-      >
-        <!-- Card produit -->
-        <div
-          v-for="produit in produits"
-          :key="produit.id"
-          class="group w-full max-w-[260px] mx-4 flex flex-col items-center text-center bg-white rounded-2xl shadow-md overflow-hidden transition-transform duration-300 hover:-translate-y-1"
-        >
-          <!-- Image du produit -->
-          <div class="relative w-full h-40">
-            <NuxtImg
-              :src="produit.imageUrl"
-              :alt="produit.name"
-              class="w-full h-full object-cover"
-            />
-          </div>
-
-          <!-- Icône flottante entre image et texte -->
-          <div class="relative -mt-6 z-10">
-            <div
-              class="backdrop-blur-sm bg-white/70 p-2 rounded-full shadow-md"
-            >
-              <img
-                :src="getIconByType(produit.type)"
-                :alt="produit.type"
-                class="w-6 h-6"
-              />
-            </div>
-          </div>
-
-          <!-- Texte descriptif -->
-          <div class="p-4 pt-2">
-            <h3 class="text-base font-bold text-[#4E5548] mb-1">
-              {{ produit.name }}
-            </h3>
-            <p class="text-sm text-[#6a765a] mb-3">
-              {{
-                produit.description || "Une expérience authentique et raffinée."
-              }}
-            </p>
-            <span class="block text-sm font-medium text-[#4a524a] mb-2"
-              >{{ produit.price }} €</span
-            >
-            <NuxtLink
-              :to="{ name: 'products-id', params: { id: produit.id } }"
-              class="px-4 py-2 rounded-full bg-[#6a765a] text-white text-sm font-semibold hover:bg-[#5a644e] transition-colors duration-300"
-            >
-              Acheter</NuxtLink
-            >
-          </div>
         </div>
       </div>
     </section>
@@ -454,6 +454,11 @@
               </g>
             </svg>
             <h3 class="md:text-xl">RESPECT DE L’ENVIRONNEMENT</h3>
+            <NuxtImg
+              src="#"
+              alt="respect de l'environnement"
+              class="h-12 w-auto object-contain"
+            />
           </div>
           <!-- Avantage "soutien à l'économie locale" -->
           <div
@@ -510,6 +515,11 @@
               </g>
             </svg>
             <h3 class="md:text-xl">SOUTIEN À L’ÉCONOMIE LOCALE</h3>
+            <NuxtImg
+              src="#"
+              alt="soutien à l'économie locale"
+              class="h-12 w-auto object-contain"
+            />
           </div>
           <!-- Avantage "Zéro produits chimiques" -->
           <div
@@ -554,6 +564,11 @@
               </g>
             </svg>
             <h3 class="md:text-xl">ZÉRO PRODUITS CHIMIQUES</h3>
+            <NuxtImg
+              src="#"
+              alt="zéro produits chimiques"
+              class="h-12 w-auto object-contain"
+            />
           </div>
         </div>
       </div>
