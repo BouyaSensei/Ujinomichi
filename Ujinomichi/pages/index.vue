@@ -29,12 +29,13 @@
                 Nos Produits
               </button>
             </NuxtLink>
-
-            <button
-              class="px-8 py-3 rounded-full bg-[#7C8259] text-white font-bold text-base hover:bg-[#727752] transition"
-            >
-              Nos Partenaires
-            </button>
+            <NuxtLink to="#partenaires" class="no-underline">
+              <button
+                class="px-8 py-3 rounded-full bg-[#7C8259] text-white font-bold text-base hover:bg-[#727752] transition"
+              >
+                Nos Partenaires
+              </button>
+            </NuxtLink>
           </div>
         </div>
       </article>
@@ -86,152 +87,6 @@
         </div>
       </div>
 
-      <article class="h-256 md:h-128 lg:h-96 flex justify-center promotion">
-        <ul
-          class="grid md:grid-cols-2 lg:flex lg:flex-row justify-center items-center"
-        >
-          <li class="flex flex-col items-center justify-center size-64">
-            <div
-              class="relative size-32 flex items-center justify-center drop-shadow-lg"
-            >
-              <svg
-                class="absolute inset-0 w-full h-full"
-                width="150"
-                height="150"
-                viewBox="0 0 150 150"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="2"
-                  y="2"
-                  width="146"
-                  height="146"
-                  rx="73"
-                  fill="#4E5548"
-                  stroke="#4E5548"
-                  stroke-width="4"
-                />
-              </svg>
-              <NuxtImg
-                src="wheat.png"
-                alt="icon ingrédients locaux"
-                class="size-16 object-contain z-10"
-              />
-            </div>
-            <p
-              class="mt-4 text-[#4E5548] text-xl font-bold text-center leading-tight uppercase"
-            >
-              ingrédients<br />locaux et bio
-            </p>
-          </li>
-          <li class="flex flex-col items-center justify-center size-64">
-            <div
-              class="relative size-32 flex items-center justify-center drop-shadow-lg"
-            >
-              <svg
-                class="absolute inset-0 w-full h-full"
-                width="150"
-                height="150"
-                viewBox="0 0 150 150"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="2"
-                  y="2"
-                  width="146"
-                  height="146"
-                  rx="73"
-                  fill="#4E5548"
-                  stroke="#4E5548"
-                  stroke-width="4"
-                />
-              </svg>
-              <NuxtImg
-                src="sun.png"
-                alt="icon produits de saison"
-                class="size-16 object-contain z-10"
-              />
-            </div>
-            <p
-              class="mt-4 text-[#4E5548] text-xl font-bold text-center leading-tight uppercase"
-            >
-              produits de<br />saison
-            </p>
-          </li>
-          <li class="flex flex-col items-center justify-center size-64">
-            <div
-              class="relative size-32 flex items-center justify-center drop-shadow-lg"
-            >
-              <svg
-                class="absolute inset-0 w-full h-full"
-                width="150"
-                height="150"
-                viewBox="0 0 150 150"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="2"
-                  y="2"
-                  width="146"
-                  height="146"
-                  rx="73"
-                  fill="#4E5548"
-                  stroke="#4E5548"
-                  stroke-width="4"
-                />
-              </svg>
-              <NuxtImg
-                src="trees_1.png"
-                alt="icon biodiversité"
-                class="size-16 object-contain z-10"
-              />
-            </div>
-            <p
-              class="mt-4 text-[#4E5548] text-xl font-bold text-center leading-tight uppercase"
-            >
-              respect de la<br />biodiversité
-            </p>
-          </li>
-          <li class="flex flex-col items-center justify-center size-64">
-            <div
-              class="relative size-32 flex items-center justify-center drop-shadow-lg"
-            >
-              <svg
-                class="absolute inset-0 w-full h-full"
-                width="150"
-                height="150"
-                viewBox="0 0 150 150"
-                fill="none"
-                xmlns="http://www.w3.org/2000/svg"
-              >
-                <rect
-                  x="2"
-                  y="2"
-                  width="146"
-                  height="146"
-                  rx="73"
-                  fill="#4E5548"
-                  stroke="#4E5548"
-                  stroke-width="4"
-                />
-              </svg>
-              <NuxtImg
-                src="flask-conical-off.png"
-                alt="icon sans additifs"
-                class="size-16 object-contain z-10"
-              />
-            </div>
-            <p
-              class="mt-4 text-[#4E5548] text-xl font-bold text-center leading-tight uppercase"
-            >
-              sans additifs<br />ni conservateurs
-            </p>
-          </li>
-        </ul>
-      </article>
       <div class="overflow-hidden bg-[#4E5548] h-12 flex items-center">
         <div class="marquee flex whitespace-nowrap">
           <span class="font-bold text-[#7C8259] uppercase tracking-widest">
@@ -332,11 +187,12 @@
             <span class="block text-sm font-medium text-[#4a524a] mb-2"
               >{{ produit.price }} €</span
             >
-            <button
+            <NuxtLink
+              :to="{ name: 'products-id', params: { id: produit.id } }"
               class="px-4 py-2 rounded-full bg-[#6a765a] text-white text-sm font-semibold hover:bg-[#5a644e] transition-colors duration-300"
             >
-              Acheter
-            </button>
+              Acheter</NuxtLink
+            >
           </div>
         </div>
       </div>
@@ -496,6 +352,7 @@
           class="bg-[#ffffff] mb-4 w-full md:w-full md:max-w-200 md:absolute md:right-0 md:bottom-0 md:rounded-lg md:outline-22 outline-[#4E5548]"
         >
           <h2
+            id="partenaires"
             class="text-3xl font-bold text-[#393E38] tracking-widest text-center py-6"
           >
             NOS PARTENAIRES
@@ -555,11 +412,11 @@
         </div>
         <!-- Les Avantages -->
         <div
-          class="grid grid-cols-1 gap-2 place-items-center text-white md:grid-cols-3 md:gap-0"
+          class="grid grid-cols-1 gap-2 place-items-center text-white md:grid-cols-3"
         >
           <!-- Avantage "respect de l'environnement" -->
           <div
-            class="flex flex-col justify-center items-center p-8 w-full max-w-156 bg-[#393E38] md:w-80 md:h-128 md:rounded-lg"
+            class="flex flex-col justify-center items-center p-9 w-full max-w-156 bg-[#393E38] md:h-128 md:rounded-lg md:m"
           >
             <svg
               class="size-16 m-4"
@@ -596,11 +453,11 @@
                 ></path>
               </g>
             </svg>
-            <h3>RESPECT DE L’ENVIRONNEMENT</h3>
+            <h3 class="md:text-xl">RESPECT DE L’ENVIRONNEMENT</h3>
           </div>
           <!-- Avantage "soutien à l'économie locale" -->
           <div
-            class="flex flex-col justify-center items-center p-8 w-full max-w-156 bg-[#393E38] md:w-80 md:h-128 md:rounded-lg"
+            class="flex flex-col justify-center items-center p-9 w-full max-w-156 bg-[#393E38] md:h-128 md:rounded-lg"
           >
             <svg
               class="size-16 m-4"
@@ -652,11 +509,11 @@
                 ></rect>
               </g>
             </svg>
-            <h3>SOUTIEN À L’ÉCONOMIE LOCALE</h3>
+            <h3 class="md:text-xl">SOUTIEN À L’ÉCONOMIE LOCALE</h3>
           </div>
           <!-- Avantage "Zéro produits chimiques" -->
           <div
-            class="flex flex-col justify-center items-center p-8 w-full max-w-156 bg-[#393E38] md:w-80 md:h-128 md:rounded-lg"
+            class="flex flex-col justify-center items-center p-9 w-full max-w-156 bg-[#393E38] md:h-128 md:rounded-lg"
           >
             <svg
               class="size-16 m-4"
@@ -696,7 +553,7 @@
                 ></path>
               </g>
             </svg>
-            <h3>ZÉRO PRODUITS CHIMIQUES</h3>
+            <h3 class="md:text-xl">ZÉRO PRODUITS CHIMIQUES</h3>
           </div>
         </div>
       </div>
@@ -712,7 +569,6 @@ const produits = ref([]);
 async function fetchProduits() {
   const res = await fetch("/api/getLastProduct");
   produits.value = await res.json();
-  //console.log(produits.value);
 }
 
 function getIconByType(type: string) {

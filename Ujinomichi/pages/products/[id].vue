@@ -287,6 +287,7 @@ if (product.value !== undefined) {
 }
 onMounted(() => {
   authStore.checkAuth();
+  productStore.fetchProducts();
 });
 //console.log(productCookie.value.products);
 //console.log(toRaw(productCookie.value.products)); // Objet brut
