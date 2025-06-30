@@ -11,7 +11,7 @@
           style="z-index: 0"
         />
         <!-- Overlay sombre -->
-        <div class="absolute inset-0 bg-black opacity-40 z-10"></div>
+        <div class="absolute inset-0 bg-black opacity-25 z-10"></div>
         <!-- Contenu centré superposé -->
         <div
           class="absolute inset-0 flex flex-col items-center justify-center text-center z-20"
@@ -29,7 +29,7 @@
                 Nos Produits
               </button>
             </NuxtLink>
-            <NuxtLink to="#partenaires" class="no-underline">
+            <NuxtLink to="#qui_sommes_nous" class="no-underline">
               <button
                 class="px-8 py-3 rounded-full bg-[#7C8259] text-white font-bold text-base hover:bg-[#727752] transition"
               >
@@ -128,11 +128,11 @@
             </div>
 
             <!-- Texte descriptif -->
-            <div class="p-4 pt-2">
+            <div class="flex flex-col items-center justify-start">
               <h3 class="text-base font-bold text-[#4E5548] mb-1">
                 {{ produit.name }}
               </h3>
-              <p class="text-sm text-[#6a765a] mb-3">
+              <p class="text-sm text-[#6a765a] mb-3 w-48 h-16">
                 {{
                   produit.description ||
                   "Une expérience authentique et raffinée."
@@ -302,7 +302,8 @@
     </section>
     <!-- Section : Qui sommes nous ? -->
     <section
-      class="w-full bg-[#4E5548] my-6 overflow-hidden flex flex-col items-center md:h-165"
+      id="qui_sommes_nous"
+      class="w-full bg-[#4E5548] mb-6 overflow-hidden flex flex-col items-center md:h-165"
     >
       <div class="lg:w-full lg:max-w-300 relative">
         <!-- Bloc image + texte -->
@@ -310,7 +311,7 @@
           <!-- image -->
           <div class="flex-1 min-h-[270px] relative">
             <NuxtImg
-              src="nous.jpg"
+              src="qui_sommes_nous/image.png"
               alt="Un verre de matcha sur une table en bois"
               class="absolute inset-0 w-full h-full object-cover md:rounded-xl"
             />
@@ -399,15 +400,14 @@
     >
       <div class="w-full md:max-w-256">
         <!-- Titre + texte -->
-        <div class="mx-6 md:mx-2">
+        <div class="mx-6 md:mx-3">
           <h2 class="text-3xl font-bold text-[#393E38] mb-6 md:text-left">
             DE LA FERME À VOTRE VERRE !
           </h2>
           <p class="mb-4 md:text-left">
-            Nos produits possèdent une qualité supérieur dû à la qualité de
-            leurs conception, ils contiennent zéro additifs ni conservateurs
-            chimiques. De plus ils garantissent la croissance de la ruralité et
-            de l’agriculture japonaise.
+            Nos produits sont hautement qualitatifs grâce aux soins apportées
+            lors de leurs conception, ils garantissent la croissance de la
+            ruralité et de l’agriculture japonaise.
           </p>
         </div>
         <!-- Les Avantages -->
@@ -416,69 +416,83 @@
         >
           <!-- Avantage "respect de l'environnement" -->
           <div
-            class="flex flex-col justify-center items-center p-9 w-full max-w-156 bg-[#393E38] md:h-128 md:rounded-lg md:m"
+            class="flex flex-col relative justify-center items-center rounded-lg overflow-hidden p-9 w-full max-w-156 md:h-138"
           >
-            <svg
-              class="size-16 m-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <NuxtImg
+              src="avantages/enviro.png"
+              alt="Coffrets découvertes"
+              class="absolute inset-0 w-full h-full object-cover object-[20%_80%]"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div
+              class="flex flex-col relative z-10 justify-center items-center"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="10"
-                  stroke="#ffffff"
-                  stroke-width="1.5"
-                ></circle>
-                <path
-                  d="M6 4.71053C6.78024 5.42105 8.38755 7.36316 8.57481 9.44737C8.74984 11.3955 10.0357 12.9786 12 13C12.7549 13.0082 13.5183 
+              <svg
+                class="size-16 m-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <circle
+                    cx="12"
+                    cy="12"
+                    r="10"
+                    stroke="#ffffff"
+                    stroke-width="1.5"
+                  ></circle>
+                  <path
+                    d="M6 4.71053C6.78024 5.42105 8.38755 7.36316 8.57481 9.44737C8.74984 11.3955 10.0357 12.9786 12 13C12.7549 13.0082 13.5183 
                 12.4629 13.5164 11.708C13.5158 11.4745 13.4773 11.2358 13.417 11.0163C13.3331 10.7108 13.3257 10.3595 13.5 10C14.1099 8.74254 
                 15.3094 8.40477 16.2599 7.72186C16.6814 7.41898 17.0659 7.09947 17.2355 6.84211C17.7037 6.13158 18.1718 4.71053 17.9377 4"
-                  stroke="#ffffff"
-                  stroke-width="1.5"
-                ></path>
-                <path
-                  d="M22 13C21.6706 13.931 21.4375 16.375 17.7182 16.4138C17.7182 16.4138 14.4246 16.4138 13.4365 18.2759C12.646 19.7655 13.1071 
+                    stroke="#ffffff"
+                    stroke-width="1.5"
+                  ></path>
+                  <path
+                    d="M22 13C21.6706 13.931 21.4375 16.375 17.7182 16.4138C17.7182 16.4138 14.4246 16.4138 13.4365 18.2759C12.646 19.7655 13.1071 
                 21.3793 13.4365 22"
-                  stroke="#ffffff"
-                  stroke-width="1.5"
-                ></path>
-              </g>
-            </svg>
-            <h3 class="md:text-xl">RESPECT DE L’ENVIRONNEMENT</h3>
-            <NuxtImg
-              src="#"
-              alt="respect de l'environnement"
-              class="h-12 w-auto object-contain"
-            />
+                    stroke="#ffffff"
+                    stroke-width="1.5"
+                  ></path>
+                </g>
+              </svg>
+              <h3 class="md:text-xl">RESPECT DE L’ENVIRONNEMENT</h3>
+            </div>
           </div>
           <!-- Avantage "soutien à l'économie locale" -->
           <div
-            class="flex flex-col justify-center items-center p-9 w-full max-w-156 bg-[#393E38] md:h-128 md:rounded-lg"
+            class="flex flex-col relative justify-center items-center rounded-lg overflow-hidden p-9 w-full max-w-156 md:h-138"
           >
-            <svg
-              class="size-16 m-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <NuxtImg
+              src="avantages/economie.png"
+              alt="Coffrets découvertes"
+              class="absolute inset-0 w-full h-full object-cover"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div
+              class="flex flex-col relative z-10 justify-center items-center"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  d="M10.1497 8.80219L9.70794 9.40825L10.1497 8.80219ZM12 3.10615L11.4925 3.65833C11.7794 3.9221 12.2206 3.9221 12.5075 
+              <svg
+                class="size-16 m-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    d="M10.1497 8.80219L9.70794 9.40825L10.1497 8.80219ZM12 3.10615L11.4925 3.65833C11.7794 3.9221 12.2206 3.9221 12.5075 
                 3.65833L12 3.10615ZM13.8503 8.8022L14.2921 9.40826L13.8503 8.8022ZM12 9.67598L12 10.426H12L12 9.67598ZM10.5915 8.19612C9.90132 
                 7.69298 9.16512 7.08112 8.60883 6.43627C8.03452 5.77053 7.75 5.18233 7.75 4.71476H6.25C6.25 5.73229 6.82845 6.66885 7.47305 
                 7.41607C8.13569 8.18419 8.97435 8.87349 9.70794 9.40825L10.5915 8.19612ZM7.75 4.71476C7.75 3.65612 8.27002 3.05231 8.8955 
@@ -489,59 +503,64 @@
                 2.62238 15.1045 2.84181C15.73 3.0523 16.25 3.65612 16.25 4.71475H17.75ZM9.70794 9.40825C10.463 9.95869 11.0618 10.426 12 10.426L12 
                 8.92598C11.635 8.92598 11.4347 8.81074 10.5915 8.19612L9.70794 9.40825ZM13.4085 8.19613C12.5653 8.81074 12.365 8.92598 12 8.92598L12 
                 10.426C12.9382 10.426 13.537 9.9587 14.2921 9.40826L13.4085 8.19613Z"
-                  fill="#ffffff"
-                ></path>
-                <path
-                  d="M5 20.3884H7.25993C8.27079 20.3884 9.29253 20.4937 10.2763 20.6964C12.0166 21.0549 13.8488 21.0983 15.6069 20.8138C16.4738 20.6734 
+                    fill="#ffffff"
+                  ></path>
+                  <path
+                    d="M5 20.3884H7.25993C8.27079 20.3884 9.29253 20.4937 10.2763 20.6964C12.0166 21.0549 13.8488 21.0983 15.6069 20.8138C16.4738 20.6734 
                 17.326 20.4589 18.0975 20.0865C18.7939 19.7504 19.6469 19.2766 20.2199 18.7459C20.7921 18.216 21.388 17.3487 21.8109 16.6707C22.1736 
                 16.0894 21.9982 15.3762 21.4245 14.943C20.7873 14.4619 19.8417 14.462 19.2046 14.9433L17.3974 16.3084C16.697 16.8375 15.932 17.3245 
                 15.0206 17.4699C14.911 17.4874 14.7962 17.5033 14.6764 17.5172M14.6764 17.5172C14.6403 17.5214 14.6038 17.5254 14.5668 17.5292M14.6764 
                 17.5172C14.8222 17.486 14.9669 17.396 15.1028 17.2775C15.746 16.7161 15.7866 15.77 15.2285 15.1431C15.0991 14.9977 14.9475 14.8764 14.7791 
                 14.7759C11.9817 13.1074 7.62942 14.3782 5 16.2429M14.6764 17.5172C14.6399 17.525 14.6033 17.5292 14.5668 17.5292M14.5668 17.5292C14.0434 
                 17.5829 13.4312 17.5968 12.7518 17.5326"
-                  stroke="#ffffff"
-                  stroke-width="1.5"
-                  stroke-linecap="round"
-                ></path>
-                <rect
-                  x="2"
-                  y="14"
-                  width="3"
-                  height="8"
-                  rx="1.5"
-                  stroke="#ffffff"
-                  stroke-width="1.5"
-                ></rect>
-              </g>
-            </svg>
-            <h3 class="md:text-xl">SOUTIEN À L’ÉCONOMIE LOCALE</h3>
-            <NuxtImg
-              src="#"
-              alt="soutien à l'économie locale"
-              class="h-12 w-auto object-contain"
-            />
+                    stroke="#ffffff"
+                    stroke-width="1.5"
+                    stroke-linecap="round"
+                  ></path>
+                  <rect
+                    x="2"
+                    y="14"
+                    width="3"
+                    height="8"
+                    rx="1.5"
+                    stroke="#ffffff"
+                    stroke-width="1.5"
+                  ></rect>
+                </g>
+              </svg>
+              <h3 class="md:text-xl">SOUTIEN À L’ÉCONOMIE LOCALE</h3>
+            </div>
           </div>
           <!-- Avantage "Zéro produits chimiques" -->
           <div
-            class="flex flex-col justify-center items-center p-9 w-full max-w-156 bg-[#393E38] md:h-128 md:rounded-lg"
+            class="flex flex-col relative justify-center items-center rounded-lg overflow-hidden p-9 w-full max-w-156 md:h-138"
           >
-            <svg
-              class="size-16 m-4"
-              viewBox="0 0 24 24"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
+            <NuxtImg
+              src="avantages/chimique.png"
+              alt="Coffrets découvertes"
+              class="absolute inset-0 w-full h-full object-cover object-[25%_75%]"
+            />
+            <div class="absolute inset-0 bg-black/40"></div>
+            <div
+              class="flex flex-col relative z-10 justify-center items-center"
             >
-              <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
-              <g
-                id="SVGRepo_tracerCarrier"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              ></g>
-              <g id="SVGRepo_iconCarrier">
-                <path
-                  fill-rule="evenodd"
-                  clip-rule="evenodd"
-                  d="M17.3859 2.64323C17.7411 2.43012 17.8562 1.96943 17.6431 1.61424C17.43 1.25906 16.9693 1.14388 16.6141 1.35699L14.2687 
+              <svg
+                class="size-16 m-4"
+                viewBox="0 0 24 24"
+                fill="none"
+                xmlns="http://www.w3.org/2000/svg"
+              >
+                <g id="SVGRepo_bgCarrier" stroke-width="0"></g>
+                <g
+                  id="SVGRepo_tracerCarrier"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                ></g>
+                <g id="SVGRepo_iconCarrier">
+                  <path
+                    fill-rule="evenodd"
+                    clip-rule="evenodd"
+                    d="M17.3859 2.64323C17.7411 2.43012 17.8562 1.96943 17.6431 1.61424C17.43 1.25906 16.9693 1.14388 16.6141 1.35699L14.2687 
                 2.76426C13.582 2.43471 12.8126 2.25011 12 2.25011C11.1874 2.25011 10.418 2.43471 9.73131 2.76426L7.38587 1.35699C7.03069 
                 1.14388 6.56999 1.25906 6.35688 1.61424C6.14377 1.96943 6.25894 2.43012 6.61413 2.64323L8.37676 3.70081C7.37449 4.65692 
                 6.75 6.00559 6.75 7.50011V7.79077C6.49339 7.92641 6.25088 8.08518 6.02526 8.2643C5.95652 8.19683 5.87356 8.14157 5.77854 
@@ -559,16 +578,12 @@
                 21.2056V15.0001C12.75 14.5859 12.4142 14.2501 12 14.2501C11.5858 14.2501 11.25 14.5859 11.25 15.0001V21.2056C8.15183 20.8351 5.75 18.1981 
                 5.75 15.0001ZM12 3.75011C14.0037 3.75011 15.6404 5.32165 15.7447 7.2994C15.522 7.26693 15.2942 7.25011 15.0625 7.25011H8.9375C8.70578 
                 7.25011 8.47799 7.26693 8.25528 7.2994C8.35958 5.32165 9.99627 3.75011 12 3.75011Z"
-                  fill="#ffffff"
-                ></path>
-              </g>
-            </svg>
-            <h3 class="md:text-xl">ZÉRO PRODUITS CHIMIQUES</h3>
-            <NuxtImg
-              src="#"
-              alt="zéro produits chimiques"
-              class="h-12 w-auto object-contain"
-            />
+                    fill="#ffffff"
+                  ></path>
+                </g>
+              </svg>
+              <h3 class="md:text-xl">ZÉRO PRODUITS CHIMIQUES</h3>
+            </div>
           </div>
         </div>
       </div>

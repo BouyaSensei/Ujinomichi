@@ -1,42 +1,42 @@
 <template>
   <section
-    class="bg-[#3E4233] text-white p-8 rounded-2xl shadow-lg max-w-4xl mx-auto space-y-6"
+    class="bg-[#4E5548] text-white p-8 rounded-xl shadow-lg max-w-4xl mx-auto space-y-6 mb-4"
   >
-    <h2 class="text-3xl font-bold text-center">🏎 Mes adresses</h2>
+    <h2 class="text-3xl font-bold text-left ml-1">Mes adresses</h2>
 
     <div
       v-if="addresses.length === 0"
-      class="bg-[#2a2d24] text-[#E9DECF] text-center px-6 py-4 rounded-xl text-sm md:text-base"
+      class="bg-[#E6DBD0] text-[#4E5548] text-center font-bold px-6 py-4 rounded-xl text-sm md:text-base"
     >
       Aucune adresse enregistrée. Cliquez sur
-      <strong class="text-purple-400">+</strong> pour en ajouter une.
+      <strong class="text-[#4E5548]">+</strong> pour en ajouter une.
     </div>
 
     <div
       v-for="(address, index) in addresses"
       :key="address.id"
-      class="bg-white rounded-xl overflow-hidden border border-gray-200 shadow-sm"
+      class="bg-white rounded-xl overflow-hidden border border-[#4E5548] shadow-sm"
     >
       <div
-        class="flex justify-between items-center px-5 py-4 bg-[#F9F6F1] cursor-pointer"
+        class="flex justify-between items-center px-5 py-4 bg-white cursor-pointer"
         @click="toggleOpen(index)"
       >
         <div
-          class="flex items-center gap-2 text-gray-800 font-medium text-base"
+          class="flex items-center gap-2 text-[#4E5548] font-medium text-base ml-1"
         >
-          🏷️ Adresse {{ index + 1 }}
-          <span class="text-sm text-gray-500"
+          Adresse {{ index + 1 }}
+          <span class="text-sm text-[#4E5548]"
             >({{ address.country || "Pays non défini" }})</span
           >
         </div>
         <div class="flex items-center gap-4">
           <button
             @click.stop="removeAddress(index)"
-            class="text-red-500 hover:text-red-700 text-sm font-semibold"
+            class="text-[#4E5548] hover:text-[#7C8259] text-sm font-semibold"
           >
             ✖ Supprimer
           </button>
-          <span class="text-gray-500 text-xl">{{
+          <span class="text-[#4E5548] text-xl">{{
             openIndexes.includes(index) ? "▾" : "▸"
           }}</span>
         </div>
@@ -48,24 +48,24 @@
       >
         <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
+            <label class="block text-sm font-medium text-[#4E5548] mb-1"
               >Nom de l'adresse</label
             >
             <input
               v-model="address.name"
               type="text"
               placeholder="Ex : Maison"
-              class="w-full rounded-md bg-[#F9F6F1] border border-gray-300 text-gray-800 placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
+              class="w-full rounded-md bg-[#F9F6F1] border border-[#4E5548] text-[#4E5548] placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
+            <label class="block text-sm font-medium text-[#4E5548] mb-1"
               >Pays</label
             >
             <select
               v-model="address.country"
-              class="w-full rounded-md bg-[#F9F6F1] border border-gray-300 text-gray-800 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
+              class="w-full rounded-md bg-[#F9F6F1] border border-[#4E5548] text-[#4E5548] px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
             >
               <option disabled value="">Sélectionnez un pays</option>
               <option v-for="country in countryList" :key="country">
@@ -75,31 +75,31 @@
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
+            <label class="block text-sm font-medium text-[#4E5548] mb-1"
               >Ville</label
             >
             <input
               v-model="address.city"
               type="text"
               placeholder="Paris"
-              class="w-full rounded-md bg-[#F9F6F1] border border-gray-300 text-gray-800 placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
+              class="w-full rounded-md bg-[#F9F6F1] border border-[#4E5548] text-[#4E5548] placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
+            <label class="block text-sm font-medium text-[#4E5548] mb-1"
               >Région</label
             >
             <input
               v-model="address.region"
               type="text"
               placeholder="Île-de-France"
-              class="w-full rounded-md bg-[#F9F6F1] border border-gray-300 text-gray-800 placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
+              class="w-full rounded-md bg-[#F9F6F1] border border-[#4E5548] text-[#4E5548] placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
+            <label class="block text-sm font-medium text-[#4E5548] mb-1"
               >Code postal</label
             >
             <input
@@ -113,12 +113,12 @@
                     .slice(0, 5))
               "
               placeholder="75000"
-              class="w-full rounded-md bg-[#F9F6F1] border border-gray-300 text-gray-800 placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
+              class="w-full rounded-md bg-[#F9F6F1] border border-[#4E5548] text-[#4E5548] placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
+            <label class="block text-sm font-medium text-[#4E5548] mb-1"
               >Téléphone</label
             >
             <input
@@ -132,24 +132,24 @@
                     .slice(0, 10))
               "
               placeholder="06..."
-              class="w-full rounded-md bg-[#F9F6F1] border border-gray-300 text-gray-800 placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
+              class="w-full rounded-md bg-[#F9F6F1] border border-[#4E5548] text-[#4E5548] placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
+            <label class="block text-sm font-medium text-[#4E5548] mb-1"
               >Rue</label
             >
             <input
               v-model="address.street"
               type="text"
               placeholder="Rue Saint-Joseph"
-              class="w-full rounded-md bg-[#F9F6F1] border border-gray-300 text-gray-800 placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
+              class="w-full rounded-md bg-[#F9F6F1] border border-[#4E5548] text-[#4E5548] placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
             />
           </div>
 
           <div>
-            <label class="block text-sm font-medium text-gray-700 mb-1"
+            <label class="block text-sm font-medium text-[#4E5548] mb-1"
               >Numéro (de rue)</label
             >
             <input
@@ -163,7 +163,7 @@
                     .slice(0, 3))
               "
               placeholder="123"
-              class="w-full rounded-md bg-[#F9F6F1] border border-gray-300 text-gray-800 placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
+              class="w-full rounded-md bg-[#F9F6F1] border border-[#4E5548] text-[#4E5548] placeholder-gray-500 px-4 py-2 text-sm focus:outline-none focus:ring-2 focus:ring-[#9A8F7B]"
             />
           </div>
         </div>
@@ -171,7 +171,7 @@
         <div class="pt-4">
           <button
             @click="validateAddress(index)"
-            class="w-full flex items-center justify-center gap-2 bg-[#E9DECF] text-black font-semibold text-base px-6 py-3 rounded-xl shadow hover:bg-[#d4c7b5] transition-all duration-200"
+            class="w-full flex items-center justify-center gap-2 bg-[#4E5548] text-white font-semibold text-base px-6 py-3 rounded-xl shadow hover:bg-[#7C8259] transition-all duration-200"
           >
             <span
               v-if="
@@ -179,9 +179,9 @@
                   (a) => a.id !== null && a.id === address.id
                 )
               "
-              >✏️ Mettre à jour cette adresse</span
+              >Mettre à jour cette adresse</span
             >
-            <span v-else>✅ Valider cette adresse</span>
+            <span v-else>Valider cette adresse</span>
           </button>
         </div>
       </div>
@@ -191,9 +191,9 @@
       <button
         v-if="openIndexes.length === 0"
         @click="addAddress"
-        class="flex items-center justify-center gap-2 bg-[#E9DECF] text-black font-semibold text-base md:text-lg px-6 py-3 rounded-xl shadow hover:bg-[#d4c7b5] transition-all duration-200"
+        class="flex items-center justify-center gap-2 bg-[#E6DBD0] text-[#4E5548] font-semibold text-base md:text-lg px-6 py-3 rounded-xl shadow hover:bg-[#EFE4D9] transition-all duration-200"
       >
-        <span class="text-purple-600 text-xl">➕</span>
+        <span class="text-[#4E5548] text-4xl mb-1 mr-1">+</span>
         Enregistrer une nouvelle adresse
       </button>
     </div>

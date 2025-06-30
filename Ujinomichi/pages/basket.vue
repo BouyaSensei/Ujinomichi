@@ -1,6 +1,8 @@
 <template>
-  <main class="max-w-6xl mx-auto px-2 py-6">
-    <h1 class="flex items-center text-2xl font-semibold gap-2 mb-6">
+  <main class="max-w-6xl mx-auto px-2 py-6 mb-8 mt-2">
+    <h1
+      class="flex items-center text-2xl text-[#4E5548] font-semibold gap-2 mb-4"
+    >
       <NuxtImg
         src="/icons/icone_panier.png"
         alt="Panier"
@@ -9,7 +11,7 @@
       />
       Mon panier
     </h1>
-    <hr class="border-gray-300 mb-6" />
+    <hr class="border-1.5 border-[#4E5548] mb-6" />
 
     <div v-if="cart.length === 0" class="flex flex-col items-center py-12">
       <NuxtImg
@@ -18,18 +20,18 @@
         width="120"
         height="120"
       />
-      <p class="mt-6 text-xl font-medium text-[#3E4233] text-center">
+      <p class="mt-6 text-xl font-medium text-[#4E5548] text-center">
         Votre panier<br />est vide
       </p>
     </div>
 
     <div v-else class="grid md:grid-cols-2 gap-6">
-      <div v-if="cart.length" class="grid md:grid-cols-2 gap-6">
+      <div v-if="cart.length" class="grid md:grid-cols-2 gap-2">
         <div>
           <div
             v-for="(item, index) in cart"
             :key="item.id"
-            class="flex items-center gap-4 mb-6"
+            class="flex items-center justify-start w-96 gap-4 mb-6"
           >
             <NuxtImg
               :src="item.imageUrl"
@@ -37,49 +39,48 @@
               class="rounded w-24 h-24 object-cover"
             />
             <div class="flex-1">
-              <div class="text-sm font-bold text-[#3E4233] uppercase mb-1">
+              <div class="text-sm font-bold text-[#4E5548] uppercase mb-1">
                 <NuxtLink
                   :to="`/products/${item.id}`"
-                  class="hover:text-[#3E4233] hover:underline transition duration-300"
+                  class="hover:text-[#4E5548] hover:underline transition duration-300"
                 >
                   {{ item.name }}
                 </NuxtLink>
               </div>
 
-              <div class="text-[#3E4233] font-semibold text-base mb-2">
+              <div class="text-[#4E5548] font-semibold text-base mb-2">
                 {{ itemTotal(item) }} €
               </div>
 
               <div class="flex items-center gap-2">
                 <button
                   @click="decrement(index, item.id)"
-                  class="w-8 h-8 flex items-center justify-center rounded bg-[#3E4233] text-white font-bold text-xl"
+                  class="size-9 flex items-center justify-center rounded bg-[#4E5548] text-white font-bold text-xl"
                 >
                   -
                 </button>
-                <span class="w-8 text-center font-bold text-[#3E4233]">
+                <span class="w-8 text-center font-bold text-[#4E5548]">
                   {{ item.quantity }}
                 </span>
                 <button
                   @click="increment(index, item.id)"
-                  class="w-8 h-8 flex items-center justify-center rounded bg-[#3E4233] text-white font-bold text-xl"
+                  class="size-9 flex items-center justify-center rounded bg-[#4E5548] text-white font-bold text-xl"
                 >
                   +
                 </button>
+                <button
+                  @click="removeFromCart(index, item.id)"
+                  class="p-2 size-9 rounded border border-[#4E5548] hover:bg-gray-100"
+                >
+                  <NuxtImg
+                    src="/icons/supprimer.png"
+                    alt="Supprimer"
+                    width="20"
+                    height="20"
+                  />
+                </button>
               </div>
             </div>
-
-            <button
-              @click="removeFromCart(index, item.id)"
-              class="p-2 rounded border border-gray-300 hover:bg-gray-100"
-            >
-              <NuxtImg
-                src="/icons/supprimer.png"
-                alt="Supprimer"
-                width="22"
-                height="22"
-              />
-            </button>
           </div>
         </div>
 
@@ -88,14 +89,14 @@
         <div class="md:col-span-2">
           <button
             @click="clearCart"
-            class="bg-[#E9DECF] text-[#3E4233] font-semibold px-4 py-2 rounded shadow"
+            class="bg-[#E6DBD0] text-[#4E5548] hover:bg-[#EFE4D9] font-semibold px-4 py-2 rounded shadow"
           >
             Vider le panier
           </button>
         </div>
       </div>
 
-      <div class="border rounded-md p-4 bg-white space-y-4">
+      <div class="border border-[#4E5548] rounded-md p-3 bg-white space-y-4">
         <div class="flex justify-between">
           <span>Produits</span><span>{{ totalProducts }} €</span>
         </div>
@@ -109,9 +110,11 @@
           <input
             type="text"
             placeholder="Votre code promo"
-            class="flex-1 border rounded px-2 py-1"
+            class="flex-1 border border-[#4E5548] rounded px-2 py-2"
           />
-          <button class="bg-[#3E4233] text-white rounded px-4 py-2">
+          <button
+            class="bg-[#4E5548] hover:bg-[#4E5548] text-white font-medium rounded px-4 py-2"
+          >
             Appliquer
           </button>
         </div>
@@ -119,7 +122,7 @@
           <span>TOTAL</span><span>{{ totalProducts }} €</span>
         </div>
         <button
-          class="w-full bg-[#E9DECF] text-[#3E4233] font-semibold py-2 rounded shadow"
+          class="w-full bg-[#4E5548] text-white font-medium py-2 rounded shadow"
         >
           Passer la commande
         </button>

@@ -1,7 +1,7 @@
 <template>
-  <div class="space-y-3 border p-4 rounded-md">
+  <div class="space-y-3 border p-4 rounded-md mb-4">
     <label class="block">
-      <span class="text-gray-700">Adresse email</span>
+      <span class="text-[#4E5548]">Adresse email</span>
       <input
         type="email"
         v-model="email"
@@ -11,7 +11,7 @@
     </label>
 
     <label class="block">
-      <span class="text-gray-700">Mot de passe (nouveau)</span>
+      <span class="text-[#4E5548]">Mot de passe (nouveau)</span>
       <input
         type="password"
         v-model="password"
@@ -21,7 +21,7 @@
     </label>
 
     <label class="block">
-      <span class="text-gray-700">Téléphone</span>
+      <span class="text-[#4E5548]">Téléphone</span>
       <input
         type="tel"
         inputmode="numeric"
@@ -36,12 +36,12 @@
     <div class="flex flex-col md:flex-row gap-2">
       <button
         @click="openModal"
-        class="w-full bg-[#3E4233] text-white py-2 rounded font-semibold"
+        class="w-full bg-[#4E5548] hover:bg-[#7C8259] text-white py-2 rounded font-semibold"
       >
         Enregistrer les modifications
       </button>
       <button
-        class="w-full bg-[#E9DECF] text-gray-800 py-2 rounded font-semibold"
+        class="w-full bg-[#E6DBD0] hover:bg-[#EFE4D9] text-[#4E5548] py-2 rounded font-semibold"
       >
         Supprimer le compte
       </button>
@@ -52,7 +52,7 @@
       v-if="showModal"
       class="fixed inset-0 backdrop-blur-sm bg-white/60 flex items-center justify-center z-50"
     >
-      <div class="bg-white p-6 rounded shadow-lg w-full max-w-md">
+      <div class="bg-white p-6 rounded shadow-lg w-full max-w-md text-center">
         <h2 class="text-xl font-semibold mb-4">
           Confirmez votre mot de passe actuel
         </h2>
@@ -63,12 +63,15 @@
           placeholder="Mot de passe actuel"
         />
         <div class="flex justify-end gap-2 mt-4">
-          <button @click="closeModal" class="bg-gray-300 px-4 py-2 rounded">
+          <button
+            @click="closeModal"
+            class="bg-[#E6DBD0] hover:bg-[#EFE4D9] text-[#4E5548] px-4 py-2 rounded font-bold"
+          >
             Annuler
           </button>
           <button
             @click="confirmModify"
-            class="bg-[#3E4233] text-white px-4 py-2 rounded"
+            class="bg-[#4E5548] hover:bg-[#7C8259] text-white px-4 py-2 rounded font-bold"
           >
             Confirmer
           </button>

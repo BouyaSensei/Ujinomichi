@@ -1,5 +1,5 @@
 <template>
-  <div class="max-w-6xl mx-auto px-4 py-6">
+  <div class="max-w-6xl mx-auto px-4 py-6 my-6">
     <!-- Layout général responsive -->
     <div class="grid grid-cols-1 md:grid-cols-4 gap-6">
       <!-- Menu navigation -->
@@ -24,7 +24,7 @@
 
         <button
           @click="logout"
-          class="hidden md:block w-full bg-[#E9DECF] text-gray-800 font-semibold py-2 rounded shadow mt-4"
+          class="hidden md:block w-full bg-[#4E5548] hover:bg-[#7C8259] text-white font-semibold py-2 rounded shadow mt-4"
         >
           Déconnexion
         </button>
@@ -45,7 +45,7 @@
           </Accordion>
           <button
             @click="logout"
-            class="w-full bg-[#E9DECF] text-gray-800 font-semibold py-2 rounded shadow"
+            class="w-full bg-[#4E5548] hover:bg-[#7C8259] text-white font-semibold py-2 rounded shadow"
           >
             Déconnexion
           </button>

@@ -1,17 +1,17 @@
 <template>
-  <main class="bg-white min-h-screen">
+  <main class="bg-white">
     <!-- Fil d'Ariane -->
     <nav
-      class="flex items-center text-gray-500 text-sm mt-4 mb-4 max-w-6xl mx-auto px-4 gap-2"
+      class="flex items-center justify-start text-[#4E5548] text-sm mt-6 mb-2 max-w-6xl mx-auto px-6 gap-2"
     >
       <NuxtLink to="/" class="hover:underline">Accueil</NuxtLink>
       <span>&gt;</span>
-      <span class="text-black font-bold">Produits</span>
+      <span class="text-[#4E5548] font-extrabold">Produits</span>
     </nav>
 
     <!-- Recherche & filtre prix -->
     <section class="max-w-6xl mx-auto px-4">
-      <div class="flex flex-col md:flex-row md:items-center gap-4 mb-4">
+      <div class="flex flex-col md:flex-row md:items-center">
         <!-- Recherche -->
         <div class="flex-1 relative">
           <input
@@ -26,27 +26,31 @@
           </span>
         </div>
         <!-- Prix -->
-        <div class="flex items-center gap-2 min-w-[180px]">
-          <span class="text-xs">10$</span>
-          <input
-            type="range"
-            min="10"
-            max="150"
-            class="w-32 accent-[#3E4233]"
-          />
-          <span class="text-xs">150$</span>
-          <span class="ml-2 font-semibold">PRIX</span>
+        <div
+          class="flex flex-col items-center justify-center gap-2 min-w-[180px] my-4 ml-4"
+        >
+          <span class="font-semibold text-sm text-[#4E5548]">PRIX</span>
+          <div class="flex items-center justify-center">
+            <span class="text-xs">10$</span>
+            <input
+              type="range"
+              min="10"
+              max="150"
+              class="w-32 mx-2 accent-[#4E5548]"
+            />
+            <span class="text-xs">150$</span>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Filtres catégories avec tes icônes -->
-    <section class="max-w-6xl mx-auto px-4 mb-5">
+    <!-- Filtres catégories avec icônes -->
+    <section class="max-w-6xl mx-auto px-4 mb-5 mt-3">
       <!-- Bouton réinitialiser -->
       <div class="flex justify-end mb-2" v-if="activeCategory">
         <button
           @click="activeCategory = null"
-          class="text-xs text-[#3E4233] underline hover:text-[#1f231c] transition"
+          class="text-xs text-[#4E5548] underline hover:text-[#7C8259] transition"
         >
           Réinitialiser les catégories
         </button>
@@ -59,8 +63,8 @@
           :class="[
             'flex items-center justify-center gap-2 py-2 rounded-md font-semibold shadow-sm transition-all duration-200',
             activeCategory === 'thé'
-              ? 'bg-[#3E4233] text-white shadow-md'
-              : 'bg-[#E9DECF] text-[#3E4233] hover:bg-[#d8cdbd] hover:-translate-y-1 hover:shadow-md',
+              ? 'outline-2 outline-[#4E5548] bg-[#E6DBD0] text-[#4E5548] shadow-md'
+              : 'bg-[#E6DBD0] text-[#4E5548] hover:bg-[#EFE4D9] hover:-translate-y-1 hover:shadow-md',
           ]"
         >
           <NuxtImg
@@ -78,8 +82,8 @@
           :class="[
             'flex items-center justify-center gap-2 py-2 rounded-md font-semibold shadow-sm transition-all duration-200',
             activeCategory === 'découverte'
-              ? 'bg-[#3E4233] text-white shadow-md'
-              : 'bg-[#E9DECF] text-[#3E4233] hover:bg-[#d8cdbd] hover:-translate-y-1 hover:shadow-md',
+              ? 'outline-2 outline-[#4E5548] bg-[#E6DBD0] text-[#4E5548] shadow-md'
+              : 'bg-[#E6DBD0] text-[#4E5548] hover:bg-[#EFE4D9] hover:-translate-y-1 hover:shadow-md',
           ]"
         >
           <NuxtImg
@@ -97,8 +101,8 @@
           :class="[
             'flex items-center justify-center gap-2 py-2 rounded-md font-semibold shadow-sm transition-all duration-200',
             activeCategory === 'alcool'
-              ? 'bg-[#3E4233] text-white shadow-md'
-              : 'bg-[#E9DECF] text-[#3E4233] hover:bg-[#d8cdbd] hover:-translate-y-1 hover:shadow-md',
+              ? 'outline-2 outline-[#4E5548] bg-[#E6DBD0] text-[#4E5548] shadow-md'
+              : 'bg-[#E6DBD0] text-[#4E5548] hover:bg-[#EFE4D9] hover:-translate-y-1 hover:shadow-md',
           ]"
         >
           <NuxtImg
@@ -116,8 +120,8 @@
           :class="[
             'flex items-center justify-center gap-2 py-2 rounded-md font-semibold shadow-sm transition-all duration-200',
             activeCategory === 'saisons'
-              ? 'bg-[#3E4233] text-white shadow-md'
-              : 'bg-[#E9DECF] text-[#3E4233] hover:bg-[#d8cdbd] hover:-translate-y-1 hover:shadow-md',
+              ? 'outline-2 outline-[#4E5548] bg-[#E6DBD0] text-[#4E5548] shadow-md'
+              : 'bg-[#E6DBD0] text-[#3E4233] hover:bg-[#d8cdbd] hover:-translate-y-1 hover:shadow-md',
           ]"
         >
           <NuxtImg
@@ -139,23 +143,25 @@
         <NuxtImg
           src="/categorie/champ1.jpg"
           alt="découvrez produits"
-          class="w-full h-36 md:h-52 object-cover absolute inset-0 z-0"
+          class="w-full h-48 md:h-52 object-cover absolute inset-0 z-0"
         />
         <!-- Overlay sombre -->
         <div class="absolute inset-0 bg-black/70 z-10"></div>
         <!-- Texte par-dessus -->
         <div
-          class="relative z-20 p-6 md:p-8 flex flex-col justify-center h-36 md:h-52"
+          class="relative z-20 p-6 md:p-8 flex flex-col justify-center h-48 md:h-52"
         >
-          <h2 class="text-lg md:text-2xl font-bold text-white mb-2">
+          <h2 class="text-lg md:text-2xl font-bold text-white my-2">
             DÉCOUVREZ TOUT NOS PRODUITS
           </h2>
-          <p class="text-xs md:text-base text-white opacity-70 leading-snug">
+          <p
+            class="text-xs md:text-base text-white opacity-70 leading-snug mb-2"
+          >
             Élaborer avec soins par nos partenaires et leurs artisans. Nos
             produits sont garantis sans conservateurs artificiels, additifs ou
-            colorants chimiques.<br />
-            En choisissant ces délicieuses boissons vous contribuez activement à
-            la croissance de l’agriculture locale japonaise.
+            colorants chimiques. En choisissant ces délicieuses boissons vous
+            contribuez activement à la croissance de l’agriculture locale
+            japonaise.
           </p>
         </div>
       </div>
@@ -184,12 +190,12 @@
     </section>
 
     <!-- Pagination modernisée -->
-    <div class="flex justify-center mt-8 gap-1 flex-wrap">
+    <div class="flex justify-center my-8 gap-1 flex-wrap">
       <button
         v-for="page in totalPages"
         :key="page"
         @click="currentPage = page"
-        class="w-9 h-9 rounded-full border border-[#3E4233] text-sm font-medium flex items-center justify-center transition-all duration-200 hover:bg-[#3E4233] hover:text-white hover:scale-105"
+        class="w-9 h-9 rounded-full border border-[#4E5548] text-sm font-medium flex items-center justify-center transition-all duration-200 hover:bg-[#7C8259] hover:text-white hover:scale-105"
         :class="{
           'bg-[#3E4233] text-white shadow-md scale-105': page === currentPage,
           'text-[#3E4233] bg-white': page !== currentPage,

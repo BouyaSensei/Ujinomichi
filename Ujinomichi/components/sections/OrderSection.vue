@@ -17,7 +17,7 @@
     />
   </div>
   -->
-  <div class="space-y-3">Aucune commande pour le moment</div>
+  <div class="space-y-3 mb-2">Aucune commande pour le moment</div>
 </template>
 
 <script setup>
