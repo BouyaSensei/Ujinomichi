@@ -13,7 +13,7 @@ export default defineEventHandler(async (event) => {
   };
 
   try {
-    await fetch("http://localhost:3333/modify-user", {
+    await fetch(`${process.env.DATABASE_URL}/modify-user`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userData }),

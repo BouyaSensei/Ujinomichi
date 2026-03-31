@@ -1,5 +1,5 @@
 export default defineEventHandler(async (event) => {
-  const product = await $fetch("http://localhost:3333/get-product");
+  const product = await $fetch(`${process.env.DATABASE_URL}/get-product`);
 
   return product;
 });

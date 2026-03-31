@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const productId = body.id;
   const productQuantity = body.productQuantity;
 
-  fetch("http://localhost:3333/addToBasket", {
+  fetch(`${process.env.DATABASE_URL}/addToBasket`, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify({ userId, productId, productQuantity }),

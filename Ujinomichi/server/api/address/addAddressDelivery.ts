@@ -2,9 +2,8 @@ export default defineEventHandler(async (event) => {
   const body = await readBody(event);
   const userId = body.userId;
   const delivery_address = body.addresses;
-  console.log(body.addresses);
   try {
-    const response = await fetch("http://localhost:3333/addAddress", {
+    const response = await fetch(`${process.env.DATABASE_URL}/addAddress`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

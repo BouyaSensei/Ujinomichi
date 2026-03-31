@@ -4,20 +4,20 @@ export default defineEventHandler(async (event) => {
 
   if (body && !JSON.parse(body).product) {
     const product = await $fetch(
-      `http://localhost:3333/get-product/${JSON.parse(body)}`
+      `${process.env.DATABASE_URL}/get-product/${JSON.parse(body)}`,
     );
     return product;
   }
   if (JSON.parse(body).product) {
     const product = await $fetch(
-      `http://localhost:3333/get-product/${JSON.parse(body).product}`
+      `${process.env.DATABASE_URL}/get-product/${JSON.parse(body).product}`,
     );
     return product;
   }
   if (!id) {
     throw createError({ statusCode: 404, message: "Product not found" });
   }
-  const product = await $fetch(`http://localhost:3333/get-product/${id}`);
+  const product = await $fetch(`${process.env.DATABASE_URL}/get-product/${id}`);
 
   return product;
 });

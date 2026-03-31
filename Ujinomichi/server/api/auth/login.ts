@@ -5,7 +5,7 @@ export default defineEventHandler(async (event) => {
   const email = body.email;
   const password = body.password;
   try {
-    const res = await fetch("http://localhost:3333/login", {
+    const res = await fetch(`${process.env.DATABASE_URL}/login`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),

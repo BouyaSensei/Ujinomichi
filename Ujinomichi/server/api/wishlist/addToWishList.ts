@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
     const productId = body.id;
     const userId = body.userId;
 
-    const response = await fetch("http://localhost:3333/addToWishList", {
+    const response = await fetch(`${process.env.DATABASE_URL}/addToWishList`, {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ userId, productId }),
