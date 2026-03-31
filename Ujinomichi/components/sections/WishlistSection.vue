@@ -14,7 +14,7 @@
 </template>
 
 <script setup>
-import WishlistCard from "~/components/Wishlistcard.vue";
+import WishlistCard from "~/components/WishlistCard.vue";
 const userStore = useUserStore();
 console.log(userStore.wishlist);
 
