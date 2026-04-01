@@ -152,7 +152,8 @@
 </template>
 
 <script setup>
-import { useToast } from "vue-toastification";
+import Toast from "vue-toastification";
+const { useToast } = Toast;
 const props = defineProps(["img", "title", "price", "key", "id"]);
 const authStore = useAuthStore();
 const toast = useToast();
