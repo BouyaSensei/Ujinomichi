@@ -152,11 +152,10 @@
 </template>
 
 <script setup>
-import Toast from "vue-toastification";
-const { useToast } = Toast;
+import { useToast } from "vue-toastification";
+const toast = useToast();
 const props = defineProps(["img", "title", "price", "key", "id"]);
 const authStore = useAuthStore();
-const toast = useToast();
 const addToBasket = () => {
   const userId = authStore.user.userId;
   const productQuantity = 1;
