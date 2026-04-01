@@ -4,7 +4,7 @@ export default defineEventHandler(async (event) => {
   const delivery_address = body.addresses;
   console.log(body);
   try {
-    const response = await fetch("http://localhost:3333/updateAddress", {
+    const response = await fetch(`${process.env.DATABASE_URL}/updateAddress`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
