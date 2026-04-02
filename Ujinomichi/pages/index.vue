@@ -605,12 +605,11 @@ interface Product {
   type: string;
 }
 
-const produits = ref<Product[]>([]);
-console.log(produits);
-async function fetchProduits() {
-  const res = await fetch("/api/getLastProduct");
-  produits.value = await res.json();
-}
+const { data: produits } = await useFetch('/api/getLastProduct', {
+  lazy: true,
+  server: false,
+  transform: (data: Product[]) => data,
+});
 
 function getIconByType(type: string) {
   switch (type?.toLowerCase()) {
@@ -624,7 +623,5 @@ function getIconByType(type: string) {
       return "season.svg";
   }
 }
-
-onMounted(fetchProduits);
 </script>
 <style></style>
