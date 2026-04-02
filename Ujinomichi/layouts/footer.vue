@@ -221,7 +221,7 @@
       </div>
       <!-- Bas de footer -->
       <div class="text-center text-[#4E5548] text-sm mt-3">
-        &copy; 2025 Uji no Michi. Tous droits réservés.
+        &copy; 2025 PixelStase. Tous droits réservés.
       </div>
     </footer>
   </div>

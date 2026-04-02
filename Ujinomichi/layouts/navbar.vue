@@ -3,7 +3,7 @@
     <div
       class="headerContainer bg-[#7C8259] text-white p-4 flex justify-center items-center"
     >
-      <h1>contact@ujinomichi.fr - 01 86 45 23 90</h1>
+      <h1>ax_95100@hotmail.fr - 07 88 29 54 00</h1>
     </div>
 
     <article class="">
