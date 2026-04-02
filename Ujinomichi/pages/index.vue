@@ -596,7 +596,16 @@
 
 const authStore = useAuthStore();
 
-const produits: Ref = ref([]);
+interface Product {
+  id: number;
+  name: string;
+  description?: string;
+  price: number;
+  imageUrl: string;
+  type: string;
+}
+
+const produits = ref<Product[]>([]);
 
 async function fetchProduits() {
   const res = await fetch("/api/getLastProduct");
