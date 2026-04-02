@@ -131,7 +131,6 @@
             <div class="flex flex-col items-center justify-start">
               <h3 class="text-base font-bold text-[#4E5548] mb-1">
                 {{ produit.name }}
-                {{ produit.id }}
               </h3>
               <p class="text-sm text-[#6a765a] mb-3 w-48 h-16">
                 {{
@@ -605,7 +604,7 @@ interface Product {
   type: string;
 }
 
-const { data: produits } = await useFetch('/api/getLastProduct', {
+const { data: produits } = await useFetch("/api/getLastProduct", {
   lazy: true,
   server: false,
   transform: (data: Product[]) => data,
