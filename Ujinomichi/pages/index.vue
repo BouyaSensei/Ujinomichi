@@ -606,7 +606,7 @@ interface Product {
 }
 
 const produits = ref<Product[]>([]);
-
+console.log(produits);
 async function fetchProduits() {
   const res = await fetch("/api/getLastProduct");
   produits.value = await res.json();
